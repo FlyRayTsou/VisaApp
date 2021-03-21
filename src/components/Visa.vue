@@ -1,7 +1,7 @@
 <template>
-  <el-select v-model="value" clearable placeholder="Age">
+  <el-select v-model="ageScore" clearable placeholder="Age">
     <el-option
-      v-for="item in options"
+      v-for="item in age"
       :key="item.value"
       :label="item.label"
       :value="item.value">
@@ -10,24 +10,14 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        options: [{
-          value: 0,
-          label: '>39'
-        }, {
-          value: 5,
-          label: '35~39'
-        }, {
-          value: 10,
-          label: '30~34'
-        }, {
-          value: 15,
-          label: '<30'
-        }],
-        value: null
-      }
+import visa from '../assets/js/constant.js'
+export default {
+
+  data() {
+    return {
+      age: visa.options.age,
+      ageScore: null
     }
   }
+}
 </script>
