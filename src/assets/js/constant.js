@@ -12,6 +12,16 @@ export default {
           }, {
             value: 15,
             label: '<30'
-        }]
+        }],
+        degree: [{
+            value: 10,
+            label: 'Bachelor'
+          }, {
+            value: 20,
+            label: 'Master'
+          }, {
+            value: 30,
+            label: 'Doctor'
+        }],
     },
 }
