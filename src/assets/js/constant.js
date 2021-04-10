@@ -76,6 +76,16 @@ export default {
             key:4,
             text:'その他法務大臣が認める研究実績'
           },
+        ],
+        qualifications:[
+          {
+            value:5,
+            text:'１つ保有'  
+          },
+          {
+            value:10,
+            text:'複数保有'
+          },
         ]
     },
 }

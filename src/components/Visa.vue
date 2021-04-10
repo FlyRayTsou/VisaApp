@@ -85,6 +85,18 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ researchAchievementScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">資格</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-radio-group v-model="qualificationsScore">
+          <el-radio v-for="item in qualifications" :key="item.value" :label="item.value">{{ item.text }}</el-radio>
+        </el-radio-group>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
 </template>
@@ -105,6 +117,8 @@ export default {
       ageScore: null,
       researchAchievement: visa.options.researchAchievement,
       researchAchievementChecked: [],
+      qualifications:　visa.options.qualifications,
+      qualificationsScore: null,
     }
   },
   computed: {
@@ -115,7 +129,7 @@ export default {
         return this.researchAchievementChecked.length > 0 ? 15 : 0
       },
       totalScore() {
-        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore]
+        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore]
         return calculate.totalScore(scores);
       }
   }
