@@ -70,9 +70,9 @@
   </el-row>
   <el-row :gutter="20">
     <el-col :span="6"><div class="grid-content bg-purple">Research Achievement</div></el-col>
-    <el-col :span="10">
+    <el-col :span="6">
       <div class="grid-content bg-purple">
-        <el-checkbox-group v-model="researchAchievementChecked">
+        <el-checkbox-group v-model="researchAchievementChecked" style="text-align:left; overflow-wrap: break-word;">
           <el-checkbox
             v-for="item in researchAchievement"
             :key="item.key"
@@ -82,7 +82,7 @@
         </el-checkbox-group>
       </div>
     </el-col>
-    <el-col :span="2"><div class="grid-content bg-purple">{{ researchAchievementScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ researchAchievementScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
   <el-divider></el-divider>
