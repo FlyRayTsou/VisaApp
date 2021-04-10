@@ -50,6 +50,8 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ salaryScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-divider></el-divider>
+  <span>{{ totalScore }}</span>
 </template>
 
 <script>
@@ -68,8 +70,12 @@ export default {
   },
   computed: {
       salaryScore() {
-          return calculate.salaryScore(this.salaryValue, this.ageScore)
+        return calculate.salaryScore(this.salaryValue, this.ageScore)
       },
+      totalScore() {
+        const scores = [this.ageScore, this.degreeScore, this.salaryScore]
+        return calculate.totalScore(scores);
+      }
   }
 }
 </script>

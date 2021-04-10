@@ -28,4 +28,10 @@ export default class {
                 return 0
         }
     }
+
+    static totalScore(scores) {
+        let total = 0
+        scores.forEach(score => total = score + total)
+        return total
+    }
 }
