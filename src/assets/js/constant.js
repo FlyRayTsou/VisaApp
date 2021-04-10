@@ -1,18 +1,5 @@
 export default {
     options: {
-        age: [{
-            value: 0,
-            label: '>39'
-          }, {
-            value: 5,
-            label: '35~39'
-          }, {
-            value: 10,
-            label: '30~34'
-          }, {
-            value: 15,
-            label: '<30'
-        }],
         degree: [{
             value: 10,
             label: 'Bachelor'
@@ -22,6 +9,19 @@ export default {
           }, {
             value: 30,
             label: 'Doctor'
+        }],
+        workExperience: [{
+            value: 20,
+            label: 'above 10years'
+          }, {
+            value: 15,
+            label: '7 ~ 10 years'
+          }, {
+            value: 10,
+            label: '5 ~ 7 years'
+          }, {
+            value: 5,
+            label: '3 ~ 5 years'
         }],
         salary: [{
             value: 1,
@@ -46,5 +46,18 @@ export default {
             label: 'above 1000'
           }
         ],
+        age: [{
+            value: 0,
+            label: '>39'
+          }, {
+            value: 5,
+            label: '35~39'
+          }, {
+            value: 10,
+            label: '30~34'
+          }, {
+            value: 15,
+            label: '<30'
+        }],
     },
 }
