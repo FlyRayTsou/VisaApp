@@ -151,7 +151,7 @@ export default {
         return calculate.specialPlusScore(this.specialPlusChecked)
       },
       totalScore() {
-        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, specialPlusScore]
+        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore]
         return calculate.totalScore(scores);
       }
   }
