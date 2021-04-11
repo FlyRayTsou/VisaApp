@@ -114,6 +114,16 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ specialPlusScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">Special Plus Research</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-checkbox v-model="specialPlusResearchChecked">{{ specialPlusResearch.text }}</el-checkbox>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ specialPlusResearchScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
 </template>
@@ -138,6 +148,8 @@ export default {
       qualificationsScore: null,
       specialPlus:　visa.options.specialPlus,
       specialPlusChecked: [],
+      specialPlusResearch:　visa.options.specialPlusResearch,
+      specialPlusResearchChecked: false,
     }
   },
   computed: {
@@ -150,8 +162,11 @@ export default {
       specialPlusScore() {
         return calculate.specialPlusScore(this.specialPlusChecked)
       },
+      specialPlusResearchScore() {
+        return this.specialPlusResearchChecked ? 5 : 0
+      },
       totalScore() {
-        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore]
+        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]
         return calculate.totalScore(scores);
       }
   }
