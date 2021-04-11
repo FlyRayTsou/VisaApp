@@ -29,6 +29,28 @@ export default class {
         }
     }
 
+    static specialPlusScore(specialPlus) {
+        let total = 0
+        let isOne = false
+        specialPlus.forEach(rule => {
+            switch(rule) {
+                case 1:
+                    isOne = true
+                    total += 10
+                    break;
+                case 2:
+                    if(isOne) {
+                        total += 10
+                    }
+                    break;
+                case 3:
+                    total += 10
+                    break;
+            }
+        })
+        return total
+    }
+
     static totalScore(scores) {
         let total = 0
         scores.forEach(score => total = score + total)

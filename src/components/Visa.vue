@@ -72,7 +72,7 @@
     <el-col :span="6"><div class="grid-content bg-purple">Research Achievement</div></el-col>
     <el-col :span="6">
       <div class="grid-content bg-purple">
-        <el-checkbox-group v-model="researchAchievementChecked" style="text-align:left; overflow-wrap: break-word;">
+        <el-checkbox-group v-model="researchAchievementChecked" style="text-align:left;">
           <el-checkbox
             v-for="item in researchAchievement"
             :key="item.key"
@@ -97,6 +97,23 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">Special Plus</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-checkbox-group v-model="specialPlusChecked">
+          <el-checkbox
+            v-for="item in specialPlus"
+            :key="item.key"
+            :label="item.key">
+            {{ item.text }}
+          </el-checkbox>
+        </el-checkbox-group>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ specialPlusScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
 </template>
@@ -119,6 +136,8 @@ export default {
       researchAchievementChecked: [],
       qualifications:　visa.options.qualifications,
       qualificationsScore: null,
+      specialPlus:　visa.options.specialPlus,
+      specialPlusChecked: [],
     }
   },
   computed: {
@@ -128,8 +147,11 @@ export default {
       researchAchievementScore() {
         return this.researchAchievementChecked.length > 0 ? 15 : 0
       },
+      specialPlusScore() {
+        return calculate.specialPlusScore(this.specialPlusChecked)
+      },
       totalScore() {
-        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore]
+        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, specialPlusScore]
         return calculate.totalScore(scores);
       }
   }
