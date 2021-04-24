@@ -148,8 +148,6 @@ export default {
       specialPlusChecked: [],
       specialPlusResearch: this.$store.state.options.specialPlusResearch,
       specialPlusResearchChecked: false,
-      tooltip:false,
-      button:false
     }
   },
   computed: {
