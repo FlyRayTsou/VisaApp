@@ -158,7 +158,7 @@ export default {
           return this.$store.state.scores.degree
         },
         set: function(value) {
-          this.$store.dispatch('setDegreeScore', value)
+          this.$store.dispatch('setScore', {key:'degree', score:value})
         },
       },
       workExperienceScore: {
@@ -166,7 +166,7 @@ export default {
           return this.$store.state.scores.workExperience
         },
         set: function(value) {
-          this.$store.dispatch('setWorkExperienceScore', value)
+          this.$store.dispatch('setScore', {key:'workExperience', score:value})
         },
       },
       salaryScore() {
@@ -188,7 +188,7 @@ export default {
   },
   methods: {
     salaryScoreCalculate() {
-      this.$store.dispatch('setSalaryScore', calculate.salaryScore(this.salaryValue, this.ageScore))
+      this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.salaryValue, this.ageScore)})
     },
   }
 }

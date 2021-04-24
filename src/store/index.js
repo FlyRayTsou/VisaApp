@@ -22,25 +22,13 @@ const store = createStore({
         }
     },
     mutations: {
-        set_salary_score (state, score) {
-            state.scores.salary = score
-        },
-        set_degree_score (state, score) {
-            state.scores.degree = score
-        },
-        set_work_experience_score (state, score) {
-            state.scores.workExperience = score
-        },
+        set_score (state, item) {
+            state.scores[item.key] = item.score
+        }
     },
     actions: {
-        setSalaryScore({ commit }, score) {
-            commit('set_salary_score', score)
-        },
-        setDegreeScore({ commit }, score) {
-            commit('set_degree_score', score)
-        },
-        setWorkExperienceScore({ commit }, score) {
-            commit('set_work_experience_score', score)
+        setScore({ commit }, item) {
+            commit('set_score', item)
         }
     }
 })
