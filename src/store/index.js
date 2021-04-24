@@ -8,7 +8,14 @@ const store = createStore({
                 'salary': 0
             },
             options: {
+                'degree': visa.options.degree,
+                'workExperience': visa.options.workExperience,
+                'salary': visa.options.salary,
                 'age': visa.options.degree,
+                'researchAchievement': visa.options.researchAchievement,
+                'qualifications': visa.options.qualifications,
+                'specialPlus': visa.options.specialPlus,
+                'specialPlusResearch': visa.options.specialPlusResearch,
             }
         }
     },

@@ -130,26 +130,25 @@
 </template>
 
 <script>
-import visa from '../assets/js/constant.js'
 import calculate from '../assets/js/calculate.js'
 export default {
   data() {
     return {
-      degree: this.$store.state.options.age,
+      degree: this.$store.state.options.degree,
       degreeScore: null,
-      workExperience: visa.options.workExperience,
+      workExperience: this.$store.state.options.workExperience,
       workExperienceScore: null,
-      salary: visa.options.salary,
+      salary: this.$store.state.options.salary,
       salaryValue: null,
-      age: visa.options.age,
+      age: this.$store.state.options.age,
       ageScore: null,
-      researchAchievement: visa.options.researchAchievement,
+      researchAchievement: this.$store.state.options.researchAchievement,
       researchAchievementChecked: [],
-      qualifications: visa.options.qualifications,
+      qualifications: this.$store.state.options.qualifications,
       qualificationsScore: null,
-      specialPlus: visa.options.specialPlus,
+      specialPlus: this.$store.state.options.specialPlus,
       specialPlusChecked: [],
-      specialPlusResearch: visa.options.specialPlusResearch,
+      specialPlusResearch: this.$store.state.options.specialPlusResearch,
       specialPlusResearchChecked: false,
       tooltip:false,
       button:false
