@@ -135,7 +135,7 @@ import calculate from '../assets/js/calculate.js'
 export default {
   data() {
     return {
-      degree: visa.options.degree,
+      degree: this.$store.state.options.age,
       degreeScore: null,
       workExperience: visa.options.workExperience,
       workExperienceScore: null,

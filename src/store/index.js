@@ -1,10 +1,14 @@
 import { createStore } from 'vuex'
+import visa from '../assets/js/constant.js'
 
 const store = createStore({
     state () {
         return {
             scores: {
                 'salary': 0
+            },
+            options: {
+                'age': visa.options.degree,
             }
         }
     },
