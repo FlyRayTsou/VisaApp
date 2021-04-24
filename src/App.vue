@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Visa from './components/Visa'
+import Visa from './components/VisaVuex'
 
 export default {
   name: 'App',

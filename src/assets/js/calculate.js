@@ -9,6 +9,9 @@ export default class {
         if(age == 10 && salary <=1) {
             return 0
         }
+        if(age == null) {
+            return 0
+        }
         switch(salary) {
             case 7:
                 return 40
