@@ -12,7 +12,7 @@ const store = createStore({
                 'degree': visa.options.degree,
                 'workExperience': visa.options.workExperience,
                 'salary': visa.options.salary,
-                'age': visa.options.degree,
+                'age': visa.options.age,
                 'researchAchievement': visa.options.researchAchievement,
                 'qualifications': visa.options.qualifications,
                 'specialPlus': visa.options.specialPlus,
