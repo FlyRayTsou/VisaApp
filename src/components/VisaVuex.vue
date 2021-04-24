@@ -135,7 +135,6 @@ export default {
   data() {
     return {
       degree: this.$store.state.options.degree,
-      degreeScore: null,
       workExperience: this.$store.state.options.workExperience,
       workExperienceScore: null,
       salary: this.$store.state.options.salary,
@@ -155,6 +154,14 @@ export default {
     }
   },
   computed: {
+      degreeScore: {
+        get: function() {
+          return this.$store.state.scores.degree
+        },
+        set: function(value) {
+          this.$store.dispatch('setDegreeScore', value)
+        },
+      },
       salaryScore() {
         return this.$store.state.scores.salary
       },
