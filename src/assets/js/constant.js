@@ -9,7 +9,11 @@ export default {
           }, {
             value: 30,
             label: 'Doctor'
-        }],
+          }, {
+            value: 0,
+            label: 'Choose Degree'
+          }
+        ],
         workExperience: [{
             value: 20,
             label: 'above 10years'
@@ -22,7 +26,11 @@ export default {
           }, {
             value: 5,
             label: '3 ~ 5 years'
-        }],
+          }, {
+            value: 0,
+            label: 'Choose Work Years'
+          }
+        ],
         salary: [{
             value: 1,
             label: '400~500'

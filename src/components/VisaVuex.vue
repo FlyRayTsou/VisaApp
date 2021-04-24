@@ -3,7 +3,7 @@
     <el-col :span="6"><div class="grid-content bg-purple">Degree</div></el-col>
     <el-col :span="6">
       <div class="grid-content bg-purple">
-        <el-select v-model="degreeScore" clearable>
+        <el-select v-model="degreeScore">
             <el-option
             v-for="item in degree"
             :key="item.value"
@@ -20,7 +20,7 @@
     <el-col :span="6"><div class="grid-content bg-purple">workExperience</div></el-col>
     <el-col :span="6">
       <div class="grid-content bg-purple">
-        <el-select v-model="workExperienceScore" clearable>
+        <el-select v-model="workExperienceScore">
             <el-option
             v-for="item in workExperience"
             :key="item.value"
@@ -136,7 +136,6 @@ export default {
     return {
       degree: this.$store.state.options.degree,
       workExperience: this.$store.state.options.workExperience,
-      workExperienceScore: null,
       salary: this.$store.state.options.salary,
       salaryValue: null,
       age: this.$store.state.options.age,
@@ -160,6 +159,14 @@ export default {
         },
         set: function(value) {
           this.$store.dispatch('setDegreeScore', value)
+        },
+      },
+      workExperienceScore: {
+        get: function() {
+          return this.$store.state.scores.workExperience
+        },
+        set: function(value) {
+          this.$store.dispatch('setWorkExperienceScore', value)
         },
       },
       salaryScore() {

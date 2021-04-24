@@ -7,6 +7,7 @@ const store = createStore({
             scores: {
                 salary: 0,
                 degree: 0,
+                workExperience: 0,
             },
             options: {
                 'degree': visa.options.degree,
@@ -26,7 +27,10 @@ const store = createStore({
         },
         set_degree_score (state, score) {
             state.scores.degree = score
-        }
+        },
+        set_work_experience_score (state, score) {
+            state.scores.workExperience = score
+        },
     },
     actions: {
         setSalaryScore({ commit }, score) {
@@ -34,6 +38,9 @@ const store = createStore({
         },
         setDegreeScore({ commit }, score) {
             commit('set_degree_score', score)
+        },
+        setWorkExperienceScore({ commit }, score) {
+            commit('set_work_experience_score', score)
         }
     }
 })
