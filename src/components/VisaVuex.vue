@@ -124,6 +124,16 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ specialPlusResearchScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">Foreign Qualification</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-checkbox v-model="foreignQualificationChecked">{{ foreignQualification.text }}</el-checkbox>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ foreignQualificationScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
   
@@ -131,23 +141,26 @@
 
 <script>
 import calculate from '../assets/js/calculate.js'
+import constant from '../assets/js/constant.js'
 export default {
   data() {
     return {
-      degree: this.$store.state.options.degree,
-      workExperience: this.$store.state.options.workExperience,
-      salary: this.$store.state.options.salary,
+      degree: constant.options.degree,
+      workExperience: constant.options.workExperience,
+      salary: constant.options.salary,
       salaryValue: null,
-      age: this.$store.state.options.age,
+      age: constant.options.age,
       ageScore: null,
-      researchAchievement: this.$store.state.options.researchAchievement,
+      researchAchievement: constant.options.researchAchievement,
       researchAchievementChecked: [],
-      qualifications: this.$store.state.options.qualifications,
+      qualifications: constant.options.qualifications,
       qualificationsScore: null,
-      specialPlus: this.$store.state.options.specialPlus,
+      specialPlus: constant.options.specialPlus,
       specialPlusChecked: [],
-      specialPlusResearch: this.$store.state.options.specialPlusResearch,
+      specialPlusResearch: constant.options.specialPlusResearch,
       specialPlusResearchChecked: false,
+      foreignQualification: constant.options.foreignQualification,
+      foreignQualificationChecked: false,
     }
   },
   computed: {
@@ -178,6 +191,9 @@ export default {
       },
       specialPlusResearchScore() {
         return this.specialPlusResearchChecked ? 5 : 0
+      },
+      foreignQualificationScore() {
+        return this.foreignQualificationChecked ? 5 : 0
       },
       totalScore() {
         const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]
