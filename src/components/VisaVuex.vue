@@ -193,7 +193,7 @@ export default {
         return this.specialPlusResearchChecked ? 5 : 0
       },
       foreignQualificationScore() {
-        return this.foreignQualificationChecked ? 5 : 0
+        return this.foreignQualificationChecked ? 10 : 0
       },
       totalScore() {
         const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]
