@@ -178,6 +178,16 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ topCollegeScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">JICA</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-checkbox v-model="jicaChecked">{{ jica.text }}</el-checkbox>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ jicaScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
   
@@ -211,6 +221,8 @@ export default {
       japaneseLevelChecked: [],
       topCollege: constant.options.topCollege,
       topCollegeChecked: [],
+      jica: constant.options.jica,
+      jicaChecked: false,
     }
   },
   computed: {
@@ -253,6 +265,9 @@ export default {
       },
       topCollegeScore() {
         return this.topCollegeChecked.length > 0 ? 10 : 0
+      },
+      jicaScore() {
+        return this.jicaChecked ? 5 : 0
       },
       totalScore() {
         const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]
