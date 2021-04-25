@@ -144,6 +144,23 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">Japanese Level</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-checkbox-group v-model="japaneseLevelChecked">
+          <el-checkbox
+            v-for="item in japaneseLevel"
+            :key="item.key"
+            :label="item.key">
+            {{ item.text }}
+          </el-checkbox>
+        </el-checkbox-group>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ japaneseLevelScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
   
@@ -173,6 +190,8 @@ export default {
       foreignQualificationChecked: false,
       japanCollege: constant.options.japanCollege,
       japanCollegeChecked: false,
+      japaneseLevel: constant.options.japaneseLevel,
+      japaneseLevelChecked: [],
     }
   },
   computed: {
@@ -209,6 +228,9 @@ export default {
       },
       japanCollegeScore() {
         return this.japanCollegeChecked ? 10 : 0
+      },
+      japaneseLevelScore() {
+        return calculate.japaneseLevelScore(this.japaneseLevelChecked, this.japanCollegeChecked)
       },
       totalScore() {
         const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]

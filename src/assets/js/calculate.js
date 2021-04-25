@@ -54,6 +54,25 @@ export default class {
         return total
     }
 
+    static japaneseLevelScore(japaneseLevelChecked, japanCollegeChecked) {
+        let total = 0
+        japaneseLevelChecked.forEach(rule => {
+            switch(rule) {
+                case 1:
+                    total = 15
+                    break;
+                case 2:
+                    if(japanCollegeChecked) {
+                        total = 0
+                        break;
+                    }
+                    total = 10
+                    break;
+            }
+        })
+        return total
+    }
+
     static totalScore(scores) {
         let total = 0
         scores.forEach(score => total = score + total)

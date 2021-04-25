@@ -124,5 +124,17 @@ export default {
           value:10,
           text:'日本の大学を卒業又は大学院の課程を修了'  
         },
+        japaneseLevel: [
+          {
+            key:1,
+            value:15,
+            text:'日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当'  
+          },
+          {
+            key:2,
+            value:10,
+            text:'日本語能力試験Ｎ２合格相当'
+          },
+        ]
     },
 }
