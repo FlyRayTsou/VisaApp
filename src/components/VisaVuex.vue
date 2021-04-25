@@ -134,6 +134,16 @@
     <el-col :span="6"><div class="grid-content bg-purple">{{ foreignQualificationScore }}</div></el-col>
     <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
   </el-row>
+  <el-row :gutter="20">
+    <el-col :span="6"><div class="grid-content bg-purple">Japan College</div></el-col>
+    <el-col :span="6">
+      <div class="grid-content bg-purple">
+        <el-checkbox v-model="japanCollegeChecked">{{ japanCollege.text }}</el-checkbox>
+      </div>
+    </el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>
+    <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+  </el-row>
   <el-divider></el-divider>
   <span>{{ totalScore }}</span>
   
@@ -161,6 +171,8 @@ export default {
       specialPlusResearchChecked: false,
       foreignQualification: constant.options.foreignQualification,
       foreignQualificationChecked: false,
+      japanCollege: constant.options.japanCollege,
+      japanCollegeChecked: false,
     }
   },
   computed: {
@@ -194,6 +206,9 @@ export default {
       },
       foreignQualificationScore() {
         return this.foreignQualificationChecked ? 10 : 0
+      },
+      japanCollegeScore() {
+        return this.japanCollegeChecked ? 10 : 0
       },
       totalScore() {
         const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]
