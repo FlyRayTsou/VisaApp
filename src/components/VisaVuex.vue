@@ -162,7 +162,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Japan College</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="japanCollegeChecked" @change="japanCollegeCalculate">{{ japanCollege.text }}</el-checkbox>
+          <el-checkbox v-model="japanCollegeChecked" @change="japanCollegeCalculate(); japaneseLevelCalculate();">{{ japanCollege.text }}</el-checkbox>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>

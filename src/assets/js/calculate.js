@@ -56,12 +56,18 @@ export default class {
 
     static japaneseLevelScore(japaneseLevelChecked, japanCollegeChecked) {
         let total = 0
+        let isN1 = false
         japaneseLevelChecked.forEach(rule => {
             switch(rule) {
                 case 1:
                     total = 15
+                    isN1 = true
                     break;
                 case 2:
+                    if(isN1) {
+                        total = 15
+                        break;
+                    }
                     if(japanCollegeChecked) {
                         total = 0
                         break;
