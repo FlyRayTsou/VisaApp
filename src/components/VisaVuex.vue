@@ -4,6 +4,17 @@
   <el-main>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Item</div></el-col>
+      <el-col :span="6">
+        <div class="grid-content bg-purple text-align-left">
+          Options
+        </div>
+      </el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">Scores</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">Degree</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
