@@ -3,9 +3,10 @@
   <el-header>高度専門・技術活動「高度専門職1号(ロ)」</el-header>
   <el-main>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Degree</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Degree</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-select v-model="degreeScore">
               <el-option
               v-for="item in degree"
@@ -16,13 +17,14 @@
           </el-select>  
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ degreeScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ degreeScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">workExperience</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">workExperience</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-select v-model="workExperienceScore">
               <el-option
               v-for="item in workExperience"
@@ -33,14 +35,15 @@
           </el-select>  
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ workExperienceScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ workExperienceScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
 
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Salary</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple ">Salary</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-select v-model="salaryValue" @change="salaryScoreCalculate" clearable>
               <el-option
               v-for="item in salary"
@@ -51,13 +54,14 @@
           </el-select>  
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ salaryScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ salaryScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Age</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Age</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-select v-model="ageScore" @change="salaryScoreCalculate" clearable>
               <el-option
               v-for="item in age"
@@ -68,14 +72,15 @@
           </el-select>  
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ ageScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ ageScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Research Achievement</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Research Achievement</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="researchAchievementChecked" style="text-align:left;">
+          <el-checkbox-group v-model="researchAchievementChecked" class="text-align-left">
             <el-checkbox
               v-for="item in researchAchievement"
               :key="item.key"
@@ -85,26 +90,28 @@
           </el-checkbox-group>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ researchAchievementScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ researchAchievementScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">資格</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Qualifications</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-radio-group v-model="qualificationsScore">
             <el-radio v-for="item in qualifications" :key="item.value" :label="item.value">{{ item.text }}</el-radio>
           </el-radio-group>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Special Plus</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Special Plus</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="specialPlusChecked">
+          <el-checkbox-group v-model="specialPlusChecked" class="text-align-left">
             <el-checkbox
               v-for="item in specialPlus"
               :key="item.key"
@@ -114,44 +121,48 @@
           </el-checkbox-group>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ specialPlusScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ specialPlusScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Special Plus Research</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Special Plus Research</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="specialPlusResearchChecked">{{ specialPlusResearch.text }}</el-checkbox>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ specialPlusResearchScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ specialPlusResearchScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Foreign Qualification</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Foreign Qualification</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="foreignQualificationChecked">{{ foreignQualification.text }}</el-checkbox>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ foreignQualificationScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ foreignQualificationScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Japan College</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Japan College</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="japanCollegeChecked">{{ japanCollege.text }}</el-checkbox>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Japanese Level</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Japanese Level</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="japaneseLevelChecked">
+          <el-checkbox-group v-model="japaneseLevelChecked" class="text-align-left">
             <el-checkbox
               v-for="item in japaneseLevel"
               :key="item.key"
@@ -161,14 +172,15 @@
           </el-checkbox-group>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ japaneseLevelScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ japaneseLevelScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">Top College</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Top College</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="topCollegeChecked" style="text-align:left;">
+          <el-checkbox-group v-model="topCollegeChecked" class="text-align-left">
             <el-checkbox
               v-for="item in topCollege"
               :key="item.key"
@@ -178,18 +190,19 @@
           </el-checkbox-group>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ topCollegeScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ topCollegeScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :span="6"><div class="grid-content bg-purple">JICA</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">JICA</div></el-col>
       <el-col :span="6">
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="jicaChecked">{{ jica.text }}</el-checkbox>
         </div>
       </el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">{{ jicaScore }}</div></el-col>
-      <el-col :span="6"><div class="grid-content bg-purple">Link</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ jicaScore }}</div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-divider></el-divider>
     <span>{{ totalScore }}</span>
@@ -286,3 +299,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.el-row {
+  margin-bottom: 20px;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+::v-deep .el-checkbox__label {
+    white-space: pre-line;
+    vertical-align: top;
+}
+</style>
