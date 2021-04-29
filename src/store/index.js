@@ -5,9 +5,19 @@ const store = createStore({
     state () {
         return {
             scores: {
-                salary: 0,
-                degree: 0,
-                workExperience: 0,
+                degree: null,
+                workExperience: null,
+                salary: null,
+                age: null,
+                researchAchievement: null,
+                qualifications: null,
+                specialPlus: null,
+                specialPlusResearch: null,
+                foreignQualification: null,
+                japanCollege: null,
+                japaneseLevel: null,
+                topCollege: null,
+                jica: null,
             },
             options: {
                 'degree': visa.options.degree,
@@ -19,6 +29,13 @@ const store = createStore({
                 'specialPlus': visa.options.specialPlus,
                 'specialPlusResearch': visa.options.specialPlusResearch,
             }
+        }
+    },
+    getters: {
+        totalScores: state => {
+          let total = 0
+          Object.values(state.scores).forEach(score => total += score)
+          return total
         }
     },
     mutations: {

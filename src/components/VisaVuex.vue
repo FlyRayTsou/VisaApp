@@ -80,7 +80,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Research Achievement</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="researchAchievementChecked" class="text-align-left">
+          <el-checkbox-group v-model="researchAchievementChecked" class="text-align-left" @change="researchAchievementScoreCalculate">
             <el-checkbox
               v-for="item in researchAchievement"
               :key="item.key"
@@ -111,7 +111,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Special Plus</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="specialPlusChecked" class="text-align-left">
+          <el-checkbox-group v-model="specialPlusChecked" class="text-align-left" @change="specialPlusScoreCalculate">
             <el-checkbox
               v-for="item in specialPlus"
               :key="item.key"
@@ -129,7 +129,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Special Plus Research</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="specialPlusResearchChecked">{{ specialPlusResearch.text }}</el-checkbox>
+          <el-checkbox v-model="specialPlusResearchChecked" @change="specialPlusResearchScoreCalculate">{{ specialPlusResearch.text }}</el-checkbox>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ specialPlusResearchScore }}</div></el-col>
@@ -140,7 +140,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Foreign Qualification</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="foreignQualificationChecked">{{ foreignQualification.text }}</el-checkbox>
+          <el-checkbox v-model="foreignQualificationChecked" @change="foreignQualificationCalculate">{{ foreignQualification.text }}</el-checkbox>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ foreignQualificationScore }}</div></el-col>
@@ -151,7 +151,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Japan College</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="japanCollegeChecked">{{ japanCollege.text }}</el-checkbox>
+          <el-checkbox v-model="japanCollegeChecked" @change="japanCollegeCalculate">{{ japanCollege.text }}</el-checkbox>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>
@@ -162,7 +162,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Japanese Level</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="japaneseLevelChecked" class="text-align-left">
+          <el-checkbox-group v-model="japaneseLevelChecked" class="text-align-left" @change="japaneseLevelCalculate">
             <el-checkbox
               v-for="item in japaneseLevel"
               :key="item.key"
@@ -180,7 +180,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">Top College</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="topCollegeChecked" class="text-align-left">
+          <el-checkbox-group v-model="topCollegeChecked" class="text-align-left" @change="topCollegeCalculate">
             <el-checkbox
               v-for="item in topCollege"
               :key="item.key"
@@ -198,7 +198,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">JICA</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="jicaChecked">{{ jica.text }}</el-checkbox>
+          <el-checkbox v-model="jicaChecked" @change="jicaCalculate">{{ jica.text }}</el-checkbox>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ jicaScore }}</div></el-col>
@@ -222,11 +222,9 @@ export default {
       salary: constant.options.salary,
       salaryValue: null,
       age: constant.options.age,
-      ageScore: null,
       researchAchievement: constant.options.researchAchievement,
       researchAchievementChecked: [],
       qualifications: constant.options.qualifications,
-      qualificationsScore: null,
       specialPlus: constant.options.specialPlus,
       specialPlusChecked: [],
       specialPlusResearch: constant.options.specialPlusResearch,
@@ -263,38 +261,77 @@ export default {
       salaryScore() {
         return this.$store.state.scores.salary
       },
+      ageScore: {
+        get: function() {
+          return this.$store.state.scores.age
+        },
+        set: function(value) {
+          this.$store.dispatch('setScore', {key:'age', score:value})
+        },
+      },
       researchAchievementScore() {
-        return this.researchAchievementChecked.length > 0 ? 15 : 0
+        return this.$store.state.scores.researchAchievement
+      },
+      qualificationsScore: {
+        get: function() {
+          return this.$store.state.scores.qualifications
+        },
+        set: function(value) {
+          this.$store.dispatch('setScore', {key:'qualifications', score:value})
+        },
       },
       specialPlusScore() {
-        return calculate.specialPlusScore(this.specialPlusChecked)
+        return this.$store.state.scores.specialPlus
       },
       specialPlusResearchScore() {
-        return this.specialPlusResearchChecked ? 5 : 0
+        return this.$store.state.scores.specialPlusResearch
       },
       foreignQualificationScore() {
-        return this.foreignQualificationChecked ? 10 : 0
+        return this.$store.state.scores.foreignQualification
       },
       japanCollegeScore() {
-        return this.japanCollegeChecked ? 10 : 0
+        return this.$store.state.scores.japanCollege
       },
       japaneseLevelScore() {
-        return calculate.japaneseLevelScore(this.japaneseLevelChecked, this.japanCollegeChecked)
+        return this.$store.state.scores.japaneseLevel
       },
       topCollegeScore() {
-        return this.topCollegeChecked.length > 0 ? 10 : 0
+        return this.$store.state.scores.topCollege
       },
       jicaScore() {
-        return this.jicaChecked ? 5 : 0
+        return this.$store.state.scores.jica
       },
       totalScore() {
-        const scores = [this.degreeScore, this.workExperienceScore, this.salaryScore, this.ageScore, this.researchAchievementScore, this.qualificationsScore, this.specialPlusScore, this.specialPlusResearchScore]
-        return calculate.totalScore(scores);
+        return this.$store.getters.totalScores
       },
   },
   methods: {
     salaryScoreCalculate() {
       this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.salaryValue, this.ageScore)})
+    },
+    researchAchievementScoreCalculate() {
+      this.$store.dispatch('setScore', {key:'researchAchievement', score:this.researchAchievementChecked.length > 0 ? 15 : 0})
+    },
+    specialPlusScoreCalculate() {
+      this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(this.specialPlusChecked)})
+    },
+    specialPlusResearchScoreCalculate() {
+      this.$store.dispatch('setScore', {key:'specialPlusResearch', score:this.specialPlusResearchChecked ? 5 : 0})
+    },
+    foreignQualificationCalculate() {
+      this.$store.dispatch('setScore', {key:'foreignQualification', score:this.foreignQualificationChecked ? 10 : 0})
+    },
+    japanCollegeCalculate() {
+      this.$store.dispatch('setScore', {key:'japanCollege', score:this.japanCollegeChecked ? 10 : 0})
+    },
+    japaneseLevelCalculate() {
+      this.$store.dispatch('setScore', {key:'japaneseLevel', score:calculate.japaneseLevelScore(this.japaneseLevelChecked, this.japanCollegeChecked)})
+    },
+    topCollegeCalculate() {
+      this.$store.dispatch('setScore', {key:'topCollege', score:this.topCollegeChecked.length > 0 ? 10 : 0})
+    },
+    jicaCalculate() {
+      this.$store.dispatch('setScore', {key:'jica', score:this.jicaChecked ? 5 : 0})
     },
   }
 }

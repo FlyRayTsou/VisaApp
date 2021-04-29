@@ -10,7 +10,7 @@ export default {
             value: 30,
             label: 'Doctor'
           }, {
-            value: 0,
+            value: null,
             label: 'Choose Degree'
           }
         ],
@@ -27,7 +27,7 @@ export default {
             value: 5,
             label: '3 ~ 5 years'
           }, {
-            value: 0,
+            value: null,
             label: 'Choose Work Years'
           }
         ],
@@ -52,6 +52,9 @@ export default {
           }, {
             value: 7,
             label: 'above 1000'
+          }, {
+            value: null,
+            label: 'Choose Salary'
           }
         ],
         age: [{
@@ -66,7 +69,11 @@ export default {
           }, {
             value: 15,
             label: '<30'
-        }],
+          }, {
+            value: null,
+            label: 'Choose Age'
+          }
+        ],
         researchAchievement:[
           {
             key:1,
