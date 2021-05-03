@@ -1,6 +1,6 @@
 <template>
 <el-container>
-  <el-header>高度専門・技術活動「高度専門職1号(ロ)」</el-header>
+  <el-header>{{ $t("visa.name") }}<p></p></el-header>
   <el-main>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
