@@ -94,6 +94,10 @@ export default {
         ],
         qualifications:[
           {
+            value:0,
+            text:'なし'  
+          },
+          {
             value:5,
             text:'１つ保有'  
           },
