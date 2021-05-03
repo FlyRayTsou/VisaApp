@@ -7,18 +7,18 @@
   <el-main>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Item</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.name") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          Options
+          {{ $t("option.name") }}
         </div>
       </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">Scores</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ $t("score.name") }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Degree</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.degree") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-select v-model="degreeScore">
@@ -36,7 +36,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">workExperience</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.work_experience") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-select v-model="workExperienceScore">
@@ -55,7 +55,7 @@
 
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple ">Salary</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple ">{{ $t("item.annual_salary") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-select v-model="salaryValue" @change="salaryScoreCalculate" clearable>
@@ -73,7 +73,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Age</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.age") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-select v-model="ageScore" @change="salaryScoreCalculate" clearable>
@@ -91,7 +91,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Research Achievement</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.research_achievement") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
           <el-checkbox-group v-model="researchAchievementChecked" class="text-align-left" @change="researchAchievementScoreCalculate">
@@ -109,7 +109,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Qualifications</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.qualification") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-radio-group v-model="qualificationsScore">
@@ -122,7 +122,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Special Plus</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.special_plus") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
           <el-checkbox-group v-model="specialPlusChecked" class="text-align-left" @change="specialPlusScoreCalculate">
@@ -140,7 +140,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Special Plus Research</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.special_plus_research") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="specialPlusResearchChecked" @change="specialPlusResearchScoreCalculate">{{ specialPlusResearch.text }}</el-checkbox>
@@ -151,7 +151,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Foreign Qualification</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.foreign_qualification") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="foreignQualificationChecked" @change="foreignQualificationCalculate">{{ foreignQualification.text }}</el-checkbox>
@@ -162,7 +162,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Japan College</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.japan_college") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="japanCollegeChecked" @change="japanCollegeCalculate(); japaneseLevelCalculate();">{{ japanCollege.text }}</el-checkbox>
@@ -173,7 +173,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Japanese Level</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.japanese_level") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
           <el-checkbox-group v-model="japaneseLevelChecked" class="text-align-left" @change="japaneseLevelCalculate">
@@ -191,7 +191,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Top College</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.top_college") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple">
           <el-checkbox-group v-model="topCollegeChecked" class="text-align-left" @change="topCollegeCalculate">
@@ -209,7 +209,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">JICA</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.jica") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-checkbox v-model="jicaChecked" @change="jicaCalculate">{{ jica.text }}</el-checkbox>
@@ -221,7 +221,7 @@
     <el-divider></el-divider>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">Total Score</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("score.total") }}</div></el-col>
       <el-col :span="6"><div class="grid-content bg-purple text-align-left"></div></el-col>
       <el-col :span="2"><div class="grid-content bg-purple"><span :class="totalScoreColor">{{ totalScore }}</span></div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
