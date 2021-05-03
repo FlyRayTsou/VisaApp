@@ -1,6 +1,9 @@
 <template>
 <el-container>
-  <el-header>{{ $t("visa.name") }}<p></p></el-header>
+  <el-header>
+    <span>{{ $t("visa.name") }}</span>
+    <lang-change />
+  </el-header>
   <el-main>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
@@ -232,7 +235,11 @@
 <script>
 import calculate from '../assets/js/calculate.js'
 import constant from '../assets/js/constant.js'
+import LangChange from './common/LangChange'
 export default {
+  components: {
+    LangChange
+  },
   data() {
     return {
       degree: constant.options.degree,
