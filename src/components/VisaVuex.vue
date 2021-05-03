@@ -216,7 +216,14 @@
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <el-divider></el-divider>
-    <span>{{ totalScore }}</span>
+    <el-row :gutter="20">
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">Total Score</div></el-col>
+      <el-col :span="6"><div class="grid-content bg-purple text-align-left"></div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple"><span>{{ totalScore }}</span></div></el-col>
+      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
+    </el-row>
+
   </el-main>
 </el-container>
 
