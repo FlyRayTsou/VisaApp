@@ -220,7 +220,7 @@
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">Total Score</div></el-col>
       <el-col :span="6"><div class="grid-content bg-purple text-align-left"></div></el-col>
-      <el-col :span="2"><div class="grid-content bg-purple"><span>{{ totalScore }}</span></div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple"><span :class="totalScoreColor">{{ totalScore }}</span></div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
 
@@ -322,6 +322,14 @@ export default {
       totalScore() {
         return this.$store.getters.totalScores
       },
+      totalScoreColor() {
+        if (this.totalScore < 70) {
+          return 'font-red'
+        } else if (this.totalScore >= 80) {
+          return 'font-blue'
+        }
+        return 'font-green'
+      }
   },
   methods: {
     salaryScoreCalculate() {
@@ -367,5 +375,17 @@ export default {
 ::v-deep .el-checkbox__label {
     white-space: pre-line;
     vertical-align: top;
+}
+
+.font-red {
+  color: #F56C6C;
+}
+
+.font-green {
+  color: #67C23A;
+}
+
+.font-blue {
+  color: #409EFF;
 }
 </style>
