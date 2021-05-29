@@ -379,9 +379,9 @@ export default {
   text-align: left;
 }
 
-::v-deep .el-checkbox__label {
-    white-space: pre-line;
-    vertical-align: top;
+::v-deep(.el-checkbox__label) {
+  white-space: pre-line;
+  vertical-align: top;
 }
 
 .font-red {
