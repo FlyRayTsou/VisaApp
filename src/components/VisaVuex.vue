@@ -16,24 +16,7 @@
       <el-col :span="2"><div class="grid-content bg-purple">{{ $t("score.name") }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.degree") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-select v-model="degreeScore">
-              <el-option
-              v-for="item in degree"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-              </el-option>
-          </el-select>  
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ degreeScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-select item-name="degree" :items="degree" @set-score="setItemScore" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.work_experience") }}</div></el-col>
@@ -236,9 +219,11 @@
 import calculate from '../assets/js/calculate.js'
 import constant from '../assets/js/constant.js'
 import LangChange from './common/LangChange'
+import VisaSelect from './score/VisaSelect'
 export default {
   components: {
-    LangChange
+    LangChange,
+    VisaSelect
   },
   data() {
     return {
@@ -267,14 +252,6 @@ export default {
     }
   },
   computed: {
-      degreeScore: {
-        get: function() {
-          return this.$store.state.scores.degree
-        },
-        set: function(value) {
-          this.$store.dispatch('setScore', {key:'degree', score:value})
-        },
-      },
       workExperienceScore: {
         get: function() {
           return this.$store.state.scores.workExperience
@@ -339,6 +316,9 @@ export default {
       }
   },
   methods: {
+    setItemScore(item) {
+      this.$store.dispatch('setScore', {key: item.key, score:item.value})
+    },
     salaryScoreCalculate() {
       this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.salaryValue, this.ageScore)})
     },
