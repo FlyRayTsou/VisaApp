@@ -1,7 +1,7 @@
 <template>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ itemLabel }}</div></el-col>
+      <el-col :span="3"><div class="grid-content bg-purple">{{ labelText }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-select v-model="score" @change="update">
@@ -24,6 +24,7 @@ export default {
   emits: ['update'],
   props: {
     itemName: String,
+    itemLabel: String,
     items: Object,
   },
   data() {
@@ -33,7 +34,10 @@ export default {
     }
   },
   computed: {
-    itemLabel() {
+    labelText() {
+      if(this.itemLabel !== undefined) {
+        return this.$i18n.t(`item.${this.itemLabel}`)
+      }
       return this.$i18n.t(`item.${this.itemName}`)
     }
   },

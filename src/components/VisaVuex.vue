@@ -17,25 +17,7 @@
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <visa-select item-name="degree" :items="degree" @set-score="setItemScore" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.work_experience") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-select v-model="workExperienceScore">
-              <el-option
-              v-for="item in workExperience"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-              </el-option>
-          </el-select>  
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ workExperienceScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
-
+    <visa-select item-label="work_experience" item-name="workExperience" :items="workExperience" @set-score="setItemScore" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple ">{{ $t("item.annual_salary") }}</div></el-col>
@@ -252,14 +234,6 @@ export default {
     }
   },
   computed: {
-      workExperienceScore: {
-        get: function() {
-          return this.$store.state.scores.workExperience
-        },
-        set: function(value) {
-          this.$store.dispatch('setScore', {key:'workExperience', score:value})
-        },
-      },
       salaryScore() {
         return this.$store.state.scores.salary
       },
