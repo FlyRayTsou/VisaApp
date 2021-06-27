@@ -10,7 +10,7 @@ export default {
             value: 30,
             label: 'Doctor'
           }, {
-            value: null,
+            value: -1,
             label: 'Choose Degree'
           }
         ],
@@ -27,7 +27,7 @@ export default {
             value: 5,
             label: '3 ~ 5 years'
           }, {
-            value: null,
+            value: -1,
             label: 'Choose Work Years'
           }
         ],
@@ -53,7 +53,7 @@ export default {
             value: 7,
             label: 'above 1000'
           }, {
-            value: null,
+            value: -1,
             label: 'Choose Salary'
           }
         ],
@@ -70,7 +70,7 @@ export default {
             value: 15,
             label: '<30'
           }, {
-            value: null,
+            value: -1,
             label: 'Choose Age'
           }
         ],

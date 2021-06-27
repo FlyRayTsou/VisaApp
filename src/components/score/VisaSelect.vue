@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      score: null
+      score: -1
     }
   },
   computed: {
@@ -40,6 +40,9 @@ export default {
       return this.$i18n.t(`item.${this.itemName}`)
     },
     displayScore() {
+      if(this.$store.state.scores[this.itemName] === -1) {
+        return 0
+      }
       return this.$store.state.scores[this.itemName]
     }
   },
