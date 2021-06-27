@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     update() {
-      this.$emit('setScore', { key: this.itemName, value: this.score }) // second way which one is better still think
+      this.$emit('setScore', { key: this.itemName, value: this.score })
     }
   }
 }
