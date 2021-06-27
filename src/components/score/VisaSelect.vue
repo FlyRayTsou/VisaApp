@@ -6,7 +6,7 @@
         <div class="grid-content bg-purple text-align-left">
           <el-select v-model="score" @change="update">
               <el-option
-              v-for="item in itemList"
+              v-for="item in items"
               :key="item.value"
               :label="item.label"
               :value="item.value">
@@ -29,8 +29,7 @@ export default {
   },
   data() {
     return {
-      score: null,
-      itemList: this.items
+      score: null
     }
   },
   computed: {
