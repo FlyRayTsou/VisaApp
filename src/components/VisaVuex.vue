@@ -200,17 +200,6 @@ export default {
     }
   },
   computed: {
-      salaryScore() {
-        return this.$store.state.scores.salary
-      },
-      ageScore: {
-        get: function() {
-          return this.$store.state.scores.age
-        },
-        set: function(value) {
-          this.$store.dispatch('setScore', {key:'age', score:value})
-        },
-      },
       researchAchievementScore() {
         return this.$store.state.scores.researchAchievement
       },
@@ -260,7 +249,10 @@ export default {
       this.$store.dispatch('setScore', {key: item.key, score:item.value})
     },
     salaryScoreCalculate(item) {
-      this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(item.value, this.ageScore)})
+      if (item.key === 'salary') {
+        this.$store.dispatch('setSelectedOption', {key:'salary', value: item.value})
+      }
+      this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.$store.state.selectedOption.salary, this.$store.state.scores.age)})
     },
     researchAchievementScoreCalculate() {
       this.$store.dispatch('setScore', {key:'researchAchievement', score:this.researchAchievementChecked.length > 0 ? 15 : 0})

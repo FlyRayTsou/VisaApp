@@ -19,6 +19,9 @@ const store = createStore({
                 topCollege: null,
                 jica: null,
             },
+            selectedOption: {
+                salary: null
+            },
             options: {
                 'degree': visa.options.degree,
                 'workExperience': visa.options.workExperience,
@@ -41,11 +44,17 @@ const store = createStore({
     mutations: {
         set_score (state, item) {
             state.scores[item.key] = item.score
+        },
+        set_selected_option(state, item) {
+            state.selectedOption[item.key] = item.value
         }
     },
     actions: {
         setScore({ commit }, item) {
             commit('set_score', item)
+        },
+        setSelectedOption({ commit }, item) {
+            commit('set_selected_option', item)
         }
     }
 })
