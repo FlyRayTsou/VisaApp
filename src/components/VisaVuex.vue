@@ -19,7 +19,7 @@
     <visa-select item-name="degree" :items="degree" @set-score="setItemScore" />
     <visa-select item-label="work_experience" item-name="workExperience" :items="workExperience" @set-score="setItemScore" />
     <visa-select item-label="annual_salary" item-name="salary" :items="salary" @set-score="salaryScoreCalculate" />
-    <visa-select item-name="age" :items="age" @set-score="setItemScore($event), salaryScoreCalculate($event);" />
+    <visa-select item-name="age" :items="age" @set-score="setItemScore($event), salaryScoreCalculate($event)" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.research_achievement") }}</div></el-col>
