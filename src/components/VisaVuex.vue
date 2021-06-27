@@ -18,42 +18,8 @@
     </el-row>
     <visa-select item-name="degree" :items="degree" @set-score="setItemScore" />
     <visa-select item-label="work_experience" item-name="workExperience" :items="workExperience" @set-score="setItemScore" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple ">{{ $t("item.annual_salary") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-select v-model="salaryValue" @change="salaryScoreCalculate" clearable>
-              <el-option
-              v-for="item in salary"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-              </el-option>
-          </el-select>  
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ salaryScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.age") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-select v-model="ageScore" @change="salaryScoreCalculate" clearable>
-              <el-option
-              v-for="item in age"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-              </el-option>
-          </el-select>  
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ ageScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-select item-label="annual_salary" item-name="salary" :items="salary" @set-score="salaryScoreCalculate" />
+    <visa-select item-name="age" :items="age" @set-score="setItemScore($event), salaryScoreCalculate($event);" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.research_achievement") }}</div></el-col>
@@ -293,8 +259,8 @@ export default {
     setItemScore(item) {
       this.$store.dispatch('setScore', {key: item.key, score:item.value})
     },
-    salaryScoreCalculate() {
-      this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.salaryValue, this.ageScore)})
+    salaryScoreCalculate(item) {
+      this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(item.value, this.ageScore)})
     },
     researchAchievementScoreCalculate() {
       this.$store.dispatch('setScore', {key:'researchAchievement', score:this.researchAchievementChecked.length > 0 ? 15 : 0})

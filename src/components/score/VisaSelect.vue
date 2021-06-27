@@ -14,7 +14,7 @@
           </el-select>
         </div>
       </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ score }}</div></el-col>
+      <el-col :span="2"><div class="grid-content bg-purple">{{ displayScore }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
 </template>
@@ -38,6 +38,9 @@ export default {
         return this.$i18n.t(`item.${this.itemLabel}`)
       }
       return this.$i18n.t(`item.${this.itemName}`)
+    },
+    displayScore() {
+      return this.$store.state.scores[this.itemName]
     }
   },
   methods: {
