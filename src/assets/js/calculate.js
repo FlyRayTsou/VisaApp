@@ -35,7 +35,7 @@ export default class {
     static specialPlusScore(specialPlus) {
         let total = 0
         let isOne = false
-        specialPlus.forEach(rule => {
+        specialPlus.sort().forEach(rule => {
             switch(rule) {
                 case 1:
                     isOne = true
