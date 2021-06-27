@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  emits: ['update'],
+  emits: ['setScore'],
   props: {
     itemName: String,
     itemLabel: String,
