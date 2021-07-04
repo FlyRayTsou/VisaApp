@@ -1,16 +1,18 @@
+import CONSTANT from './constant'
+
 export default {
     options: {
         degree: [{
-            value: 10,
+            value: CONSTANT.OPTIONS.DEGREE.BACHELOR,
             label: 'option.degree.bachelor'
           }, {
-            value: 20,
+            value: CONSTANT.OPTIONS.DEGREE.MASTER,
             label: 'option.degree.master'
           }, {
-            value: 30,
+            value: CONSTANT.OPTIONS.DEGREE.DOCTOR,
             label: 'option.degree.doctor'
           }, {
-            value: -1,
+            value: CONSTANT.OPTIONS.DEFAULT,
             label: 'option.degree.default'
           }
         ],
