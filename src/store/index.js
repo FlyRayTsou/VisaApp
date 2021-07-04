@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import visa from '../assets/js/constant.js'
+import visa from '../assets/js/setting.js'
 
 const store = createStore({
     state () {

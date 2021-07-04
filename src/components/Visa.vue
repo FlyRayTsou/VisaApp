@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import visa from '../assets/js/constant.js'
+import visa from '../assets/js/setting.js'
 import calculate from '../assets/js/calculate.js'
 export default {
   data() {

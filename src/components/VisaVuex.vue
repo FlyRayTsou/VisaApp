@@ -165,7 +165,7 @@
 
 <script>
 import calculate from '../assets/js/calculate.js'
-import constant from '../assets/js/constant.js'
+import setting from '../assets/js/setting.js'
 import LangChange from './common/LangChange'
 import VisaSelect from './score/VisaSelect'
 export default {
@@ -175,27 +175,27 @@ export default {
   },
   data() {
     return {
-      degree: constant.options.degree,
-      workExperience: constant.options.workExperience,
-      salary: constant.options.salary,
+      degree: setting.options.degree,
+      workExperience: setting.options.workExperience,
+      salary: setting.options.salary,
       salaryValue: null,
-      age: constant.options.age,
-      researchAchievement: constant.options.researchAchievement,
+      age: setting.options.age,
+      researchAchievement: setting.options.researchAchievement,
       researchAchievementChecked: [],
-      qualifications: constant.options.qualifications,
-      specialPlus: constant.options.specialPlus,
+      qualifications: setting.options.qualifications,
+      specialPlus: setting.options.specialPlus,
       specialPlusChecked: [],
-      specialPlusResearch: constant.options.specialPlusResearch,
+      specialPlusResearch: setting.options.specialPlusResearch,
       specialPlusResearchChecked: false,
-      foreignQualification: constant.options.foreignQualification,
+      foreignQualification: setting.options.foreignQualification,
       foreignQualificationChecked: false,
-      japanCollege: constant.options.japanCollege,
+      japanCollege: setting.options.japanCollege,
       japanCollegeChecked: false,
-      japaneseLevel: constant.options.japaneseLevel,
+      japaneseLevel: setting.options.japaneseLevel,
       japaneseLevelChecked: [],
-      topCollege: constant.options.topCollege,
+      topCollege: setting.options.topCollege,
       topCollegeChecked: [],
-      jica: constant.options.jica,
+      jica: setting.options.jica,
       jicaChecked: false,
     }
   },
