@@ -2,76 +2,76 @@ export default {
     options: {
         degree: [{
             value: 10,
-            label: 'Bachelor'
+            label: 'option.degree.bachelor'
           }, {
             value: 20,
-            label: 'Master'
+            label: 'option.degree.master'
           }, {
             value: 30,
-            label: 'Doctor'
+            label: 'option.degree.doctor'
           }, {
             value: -1,
-            label: 'Choose Degree'
+            label: 'option.degree.default'
           }
         ],
         workExperience: [{
             value: 20,
-            label: 'above 10years'
+            label: 'option.work_experience.above_ten'
           }, {
             value: 15,
-            label: '7 ~ 10 years'
+            label: 'option.work_experience.seven_to_ten'
           }, {
             value: 10,
-            label: '5 ~ 7 years'
+            label: 'option.work_experience.five_to_seven'
           }, {
             value: 5,
-            label: '3 ~ 5 years'
+            label: 'option.work_experience.three_to_five'
           }, {
             value: -1,
-            label: 'Choose Work Years'
+            label: 'option.work_experience.default'
           }
         ],
         salary: [{
             value: 1,
-            label: '400~500'
+            label: 'option.salary.four_to_five'
           }, {
             value: 2,
-            label: '500~600'
+            label: 'option.salary.five_to_six'
           }, {
             value: 3,
-            label: '600~700'
+            label: 'option.salary.six_to_seven'
           }, {
             value: 4,
-            label: '700~800'
+            label: 'option.salary.seven_to_eight'
           }, {
             value: 5,
-            label: '800~900'
+            label: 'option.salary.eight_to_nine'
           }, {
             value: 6,
-            label: '900~1000'
+            label: 'option.salary.nine_to_ten'
           }, {
             value: 7,
-            label: 'above 1000'
+            label: 'option.salary.above_ten'
           }, {
             value: -1,
-            label: 'Choose Salary'
+            label: 'option.salary.default'
           }
         ],
         age: [{
             value: 0,
-            label: '>39'
+            label: 'option.age.above_thirty_nine'
           }, {
             value: 5,
-            label: '35~39'
+            label: 'option.age.thirty_five_to_thirty_nine'
           }, {
             value: 10,
-            label: '30~34'
+            label: 'option.age.thirty_to_thirty_four'
           }, {
             value: 15,
-            label: '<30'
+            label: 'option.age.below_thirty'
           }, {
             value: -1,
-            label: 'Choose Age'
+            label: 'option.age.default'
           }
         ],
         researchAchievement:[

@@ -8,7 +8,7 @@
               <el-option
               v-for="item in items"
               :key="item.value"
-              :label="item.label"
+              :label="$t(item.label)"
               :value="item.value">
               </el-option>
           </el-select>
