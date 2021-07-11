@@ -17,45 +17,45 @@ export default {
           }
         ],
         workExperience: [{
-            value: 20,
+            value: CONSTANT.OPTIONS.WORK_EXPERIENCE.ABOVE_TEN,
             label: 'option.work_experience.above_ten'
           }, {
-            value: 15,
+            value: CONSTANT.OPTIONS.WORK_EXPERIENCE.SEVEN_TO_TEN,
             label: 'option.work_experience.seven_to_ten'
           }, {
-            value: 10,
+            value: CONSTANT.OPTIONS.WORK_EXPERIENCE.FIVE_TO_SEVEN,
             label: 'option.work_experience.five_to_seven'
           }, {
-            value: 5,
+            value: CONSTANT.OPTIONS.WORK_EXPERIENCE.THREE_TO_FIVE,
             label: 'option.work_experience.three_to_five'
           }, {
-            value: -1,
+            value: CONSTANT.OPTIONS.DEFAULT,
             label: 'option.work_experience.default'
           }
         ],
         salary: [{
-            value: 1,
+            value: CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION,
             label: 'option.salary.four_to_five'
           }, {
-            value: 2,
+            value: CONSTANT.OPTIONS.SALARY.FIVE_TO_SIX_MILLION,
             label: 'option.salary.five_to_six'
           }, {
-            value: 3,
+            value: CONSTANT.OPTIONS.SALARY.SIX_TO_SEVEN_MILLION,
             label: 'option.salary.six_to_seven'
           }, {
-            value: 4,
+            value: CONSTANT.OPTIONS.SALARY.SEVEN_TO_EIGHT_MILLION,
             label: 'option.salary.seven_to_eight'
           }, {
-            value: 5,
+            value: CONSTANT.OPTIONS.SALARY.EIGHT_TO_NIGHT_MILLION,
             label: 'option.salary.eight_to_nine'
           }, {
-            value: 6,
+            value: CONSTANT.OPTIONS.SALARY.NINE_TO_TEN_MILLION,
             label: 'option.salary.nine_to_ten'
           }, {
-            value: 7,
+            value: CONSTANT.OPTIONS.SALARY.ABOVE_TEN_MILLION,
             label: 'option.salary.above_ten'
           }, {
-            value: -1,
+            value: CONSTANT.OPTIONS.DEFAULT,
             label: 'option.salary.default'
           }
         ],

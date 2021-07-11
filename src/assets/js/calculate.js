@@ -1,31 +1,33 @@
+import CONSTANT from './constant'
+
 export default class {
     static salaryScore(salary, age) {
-        if(age == 0 && salary <=4) {
+        if(age == 0 && salary <= CONSTANT.OPTIONS.SALARY.SEVEN_TO_EIGHT_MILLION) {
             return 0
         }
-        if(age == 5 && salary <=2) {
+        if(age == 5 && salary <= CONSTANT.OPTIONS.SALARY.FIVE_TO_SIX_MILLION) {
             return 0
         }
-        if(age == 10 && salary <=1) {
+        if(age == 10 && salary <= CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION) {
             return 0
         }
         if(age == null) {
             return 0
         }
         switch(salary) {
-            case 7:
+            case CONSTANT.OPTIONS.SALARY.ABOVE_TEN_MILLION:
                 return 40
-            case 6:
+            case CONSTANT.OPTIONS.SALARY.NINE_TO_TEN_MILLION:
                 return 35
-            case 5:
+            case CONSTANT.OPTIONS.SALARY.EIGHT_TO_NIGHT_MILLION:
                 return 30
-            case 4:
+            case CONSTANT.OPTIONS.SALARY.SEVEN_TO_EIGHT_MILLION:
                 return 25
-            case 3:
+            case CONSTANT.OPTIONS.SALARY.SIX_TO_SEVEN_MILLION:
                 return 20
-            case 2:
+            case CONSTANT.OPTIONS.SALARY.FIVE_TO_SIX_MILLION:
                 return 15
-            case 1:
+            case CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION:
                 return 10
             default:
                 return 0
