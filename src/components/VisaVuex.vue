@@ -79,16 +79,11 @@ export default {
       qualifications: setting.options.qualifications,
       specialPlus: setting.options.specialPlus,
       specialPlusResearch: setting.options.specialPlusResearch,
-      specialPlusResearchChecked: false,
       foreignQualification: setting.options.foreignQualification,
-      foreignQualificationChecked: false,
       japanCollege: setting.options.japanCollege,
-      japanCollegeChecked: false,
       japaneseLevel: setting.options.japaneseLevel,
-      japaneseLevelChecked: [],
       topCollege: setting.options.topCollege,
       jica: setting.options.jica,
-      jicaChecked: false,
     }
   },
   computed: {
@@ -99,21 +94,6 @@ export default {
         set: function(value) {
           this.$store.dispatch('setScore', {key:'qualifications', score:value})
         },
-      },
-      specialPlusResearchScore() {
-        return this.$store.state.scores.specialPlusResearch
-      },
-      foreignQualificationScore() {
-        return this.$store.state.scores.foreignQualification
-      },
-      japanCollegeScore() {
-        return this.$store.state.scores.japanCollege
-      },
-      japaneseLevelScore() {
-        return this.$store.state.scores.japaneseLevel
-      },
-      jicaScore() {
-        return this.$store.state.scores.jica
       },
       totalScore() {
         return this.$store.getters.totalScores
