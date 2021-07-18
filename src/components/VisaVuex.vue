@@ -34,24 +34,7 @@
       <el-col :span="2"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.special_plus") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="specialPlusChecked" class="text-align-left" @change="specialPlusScoreCalculate">
-            <el-checkbox
-              v-for="item in specialPlus"
-              :key="item.key"
-              :label="item.key">
-              {{ item.text }}
-            </el-checkbox>
-          </el-checkbox-group>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ specialPlusScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-label="special_plus" item-name="specialPlus" :items="specialPlus" @set-score="specialPlusScoreCalculate" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.special_plus_research") }}</div></el-col>
@@ -167,7 +150,6 @@ export default {
       researchAchievement: setting.options.researchAchievement,
       qualifications: setting.options.qualifications,
       specialPlus: setting.options.specialPlus,
-      specialPlusChecked: [],
       specialPlusResearch: setting.options.specialPlusResearch,
       specialPlusResearchChecked: false,
       foreignQualification: setting.options.foreignQualification,
@@ -190,9 +172,6 @@ export default {
         set: function(value) {
           this.$store.dispatch('setScore', {key:'qualifications', score:value})
         },
-      },
-      specialPlusScore() {
-        return this.$store.state.scores.specialPlus
       },
       specialPlusResearchScore() {
         return this.$store.state.scores.specialPlusResearch
@@ -237,8 +216,8 @@ export default {
     researchAchievementScoreCalculate(item) {
       this.$store.dispatch('setScore', {key:'researchAchievement', score:calculate.researchAchievementScore(item.value)})
     },
-    specialPlusScoreCalculate() {
-      this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(this.specialPlusChecked)})
+    specialPlusScoreCalculate(item) {
+      this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(item.value)})
     },
     specialPlusResearchScoreCalculate() {
       this.$store.dispatch('setScore', {key:'specialPlusResearch', score:this.specialPlusResearchChecked ? 5 : 0})
