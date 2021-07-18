@@ -2,16 +2,16 @@ import CONSTANT from './constant'
 
 export default class {
     static salaryScore(salary, age) {
-        if(age == 0 && salary <= CONSTANT.OPTIONS.SALARY.SEVEN_TO_EIGHT_MILLION) {
+        if(age == CONSTANT.OPTIONS.AGE.ABOVE_THIRTY_NINE && salary <= CONSTANT.OPTIONS.SALARY.SEVEN_TO_EIGHT_MILLION) {
             return 0
         }
-        if(age == 5 && salary <= CONSTANT.OPTIONS.SALARY.FIVE_TO_SIX_MILLION) {
+        if(age == CONSTANT.OPTIONS.AGE.THIRTY_FIVE_TO_THIRTY_NINE && salary <= CONSTANT.OPTIONS.SALARY.FIVE_TO_SIX_MILLION) {
             return 0
         }
-        if(age == 10 && salary <= CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION) {
+        if(age == CONSTANT.OPTIONS.AGE.THIRTY_TO_THIRTY_FOUR && salary <= CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION) {
             return 0
         }
-        if(age == null) {
+        if(age == CONSTANT.OPTIONS.DEFAULT) {
             return 0
         }
         switch(salary) {

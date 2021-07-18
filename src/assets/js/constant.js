@@ -21,5 +21,11 @@ export default Object.freeze({
             NINE_TO_TEN_MILLION: 6,
             ABOVE_TEN_MILLION: 7,
         },
+        AGE: {
+            BELOW_THIRTY: 15,
+            THIRTY_TO_THIRTY_FOUR: 10,
+            THIRTY_FIVE_TO_THIRTY_NINE: 5,
+            ABOVE_THIRTY_NINE: 0,
+        },
     }
 })

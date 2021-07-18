@@ -60,19 +60,19 @@ export default {
           }
         ],
         age: [{
-            value: 0,
+            value: CONSTANT.OPTIONS.AGE.ABOVE_THIRTY_NINE,
             label: 'option.age.above_thirty_nine'
           }, {
-            value: 5,
+            value: CONSTANT.OPTIONS.AGE.THIRTY_FIVE_TO_THIRTY_NINE,
             label: 'option.age.thirty_five_to_thirty_nine'
           }, {
-            value: 10,
+            value: CONSTANT.OPTIONS.AGE.THIRTY_TO_THIRTY_FOUR,
             label: 'option.age.thirty_to_thirty_four'
           }, {
-            value: 15,
+            value: CONSTANT.OPTIONS.AGE.BELOW_THIRTY,
             label: 'option.age.below_thirty'
           }, {
-            value: -1,
+            value: CONSTANT.OPTIONS.DEFAULT,
             label: 'option.age.default'
           }
         ],
