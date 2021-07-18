@@ -20,24 +20,7 @@
     <visa-select item-label="work_experience" item-name="workExperience" :items="workExperience" @set-score="setItemScore" />
     <visa-select item-label="annual_salary" item-name="salary" :items="salary" @set-score="salaryScoreCalculate" />
     <visa-select item-name="age" :items="age" @set-score="setItemScore($event), salaryScoreCalculate($event)" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.research_achievement") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="researchAchievementChecked" class="text-align-left" @change="researchAchievementScoreCalculate">
-            <el-checkbox
-              v-for="item in researchAchievement"
-              :key="item.key"
-              :label="item.key">
-              {{ item.text }}
-            </el-checkbox>
-          </el-checkbox-group>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ researchAchievementScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-label="research_achievement" item-name="researchAchievement" :items="researchAchievement" @set-score="researchAchievementScoreCalculate" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.qualification") }}</div></el-col>
@@ -168,20 +151,20 @@ import calculate from '../assets/js/calculate.js'
 import setting from '../assets/js/setting.js'
 import LangChange from './common/LangChange'
 import VisaSelect from './score/VisaSelect'
+import VisaCheckbox from './score/VisaCheckbox'
 export default {
   components: {
     LangChange,
-    VisaSelect
+    VisaSelect,
+    VisaCheckbox,
   },
   data() {
     return {
       degree: setting.options.degree,
       workExperience: setting.options.workExperience,
       salary: setting.options.salary,
-      salaryValue: null,
       age: setting.options.age,
       researchAchievement: setting.options.researchAchievement,
-      researchAchievementChecked: [],
       qualifications: setting.options.qualifications,
       specialPlus: setting.options.specialPlus,
       specialPlusChecked: [],
@@ -254,8 +237,8 @@ export default {
       }
       this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.$store.state.selectedOption.salary, this.$store.state.scores.age)})
     },
-    researchAchievementScoreCalculate() {
-      this.$store.dispatch('setScore', {key:'researchAchievement', score:this.researchAchievementChecked.length > 0 ? 15 : 0})
+    researchAchievementScoreCalculate(item) {
+      this.$store.dispatch('setScore', {key:'researchAchievement', score:item.value.length > 0 ? 15 : 0})
     },
     specialPlusScoreCalculate() {
       this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(this.specialPlusChecked)})
