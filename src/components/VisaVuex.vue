@@ -183,9 +183,6 @@ export default {
     }
   },
   computed: {
-      researchAchievementScore() {
-        return this.$store.state.scores.researchAchievement
-      },
       qualificationsScore: {
         get: function() {
           return this.$store.state.scores.qualifications
@@ -238,7 +235,7 @@ export default {
       this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.$store.state.selectedOption.salary, this.$store.state.scores.age)})
     },
     researchAchievementScoreCalculate(item) {
-      this.$store.dispatch('setScore', {key:'researchAchievement', score:item.value.length > 0 ? 15 : 0})
+      this.$store.dispatch('setScore', {key:'researchAchievement', score:calculate.researchAchievementScore(item.value)})
     },
     specialPlusScoreCalculate() {
       this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(this.specialPlusChecked)})

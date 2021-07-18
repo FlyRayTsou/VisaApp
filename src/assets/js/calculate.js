@@ -34,6 +34,13 @@ export default class {
         }
     }
 
+    static researchAchievementScore(researchAchievement) {
+        if(researchAchievement.length > 0) {
+            return 15
+        }
+        return 0
+    }
+
     static specialPlusScore(specialPlus) {
         let total = 0
         let isOne = false
