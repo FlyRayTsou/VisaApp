@@ -36,17 +36,7 @@
     </el-row>
     <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="specialPlus" @set-score="specialPlusScoreCalculate" />
     <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.foreign_qualification") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="foreignQualificationChecked" @change="foreignQualificationCalculate">{{ foreignQualification.text }}</el-checkbox>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ foreignQualificationScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="foreignQualification" @set-score="foreignQualificationCalculate" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.japan_college") }}</div></el-col>
@@ -77,17 +67,7 @@
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <visa-checkbox-group item-label="top_college" item-name="topCollege" :items="topCollege" @set-score="topCollegeCalculate" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.jica") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="jicaChecked" @change="jicaCalculate">{{ jica.text }}</el-checkbox>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ jicaScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-name="jica" :item="jica" @set-score="jicaCalculate" />
     <el-divider></el-divider>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
@@ -193,8 +173,8 @@ export default {
     specialPlusResearchScoreCalculate(item) {
       this.$store.dispatch('setScore', {key:'specialPlusResearch', score:item.value ? 5 : 0})
     },
-    foreignQualificationCalculate() {
-      this.$store.dispatch('setScore', {key:'foreignQualification', score:this.foreignQualificationChecked ? 10 : 0})
+    foreignQualificationCalculate(item) {
+      this.$store.dispatch('setScore', {key:'foreignQualification', score:item.value ? 10 : 0})
     },
     japanCollegeCalculate() {
       this.$store.dispatch('setScore', {key:'japanCollege', score:this.japanCollegeChecked ? 10 : 0})
@@ -205,8 +185,8 @@ export default {
     topCollegeCalculate(item) {
       this.$store.dispatch('setScore', {key:'topCollege', score:item.value.length > 0 ? 10 : 0})
     },
-    jicaCalculate() {
-      this.$store.dispatch('setScore', {key:'jica', score:this.jicaChecked ? 5 : 0})
+    jicaCalculate(item) {
+      this.$store.dispatch('setScore', {key:'jica', score:item.value ? 5 : 0})
     },
   }
 }
