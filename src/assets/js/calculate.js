@@ -63,6 +63,41 @@ export default class {
         return total
     }
 
+    static specialPlusResearchScore(specialPlusResearch) {
+        if(specialPlusResearch) {
+            return 5
+        }
+        return 0
+    }
+
+    static foreignQualificationScore(foreignQualification) {
+        if(foreignQualification) {
+            return 10
+        }
+        return 0
+    }
+
+    static japanCollegeScore(japanCollege) {
+        if(japanCollege) {
+            return 10
+        }
+        return 0
+    }
+
+    static topCollegeScore(topCollege) {
+        if(topCollege.length > 0) {
+            return 10
+        }
+        return 0
+    }
+
+    static jicaScore(jica) {
+        if(jica) {
+            return 5
+        }
+        return 0
+    }
+
     static japaneseLevelScore(japaneseLevelChecked, japanCollegeChecked) {
         let total = 0
         let isN1 = false

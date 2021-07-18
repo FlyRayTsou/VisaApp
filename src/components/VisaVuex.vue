@@ -20,7 +20,7 @@
     <visa-select item-label="work_experience" item-name="workExperience" :items="options.workExperience" @set-score="setItemScore" />
     <visa-select item-label="annual_salary" item-name="salary" :items="options.salary" @set-score="salaryScoreCalculate" />
     <visa-select item-name="age" :items="options.age" @set-score="setItemScore($event), salaryScoreCalculate($event)" />
-    <visa-checkbox-group item-label="research_achievement" item-name="researchAchievement" :items="options.researchAchievement" @set-score="researchAchievementScoreCalculate" />
+    <visa-checkbox-group item-label="research_achievement" item-name="researchAchievement" :items="options.researchAchievement" @set-score="setItemScore" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.qualification") }}</div></el-col>
@@ -35,12 +35,12 @@
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="options.specialPlus" @set-score="setItemScore" />
-    <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="options.specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
-    <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="options.foreignQualification" @set-score="foreignQualificationCalculate" />
-    <visa-checkbox item-label="japan_college" item-name="japanCollege" :item="options.japanCollege" @set-score="japanCollegeCalculate($event), japaneseLevelCalculate($event)" />
+    <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="options.specialPlusResearch" @set-score="setItemScore" />
+    <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="options.foreignQualification" @set-score="setItemScore" />
+    <visa-checkbox item-label="japan_college" item-name="japanCollege" :item="options.japanCollege" @set-score="setItemScore($event), japaneseLevelCalculate($event)" />
     <visa-checkbox-group item-label="japanese_level" item-name="japaneseLevel" :items="options.japaneseLevel" @set-score="japaneseLevelCalculate" />
-    <visa-checkbox-group item-label="top_college" item-name="topCollege" :items="options.topCollege" @set-score="topCollegeCalculate" />
-    <visa-checkbox item-name="jica" :item="options.jica" @set-score="jicaCalculate" />
+    <visa-checkbox-group item-label="top_college" item-name="topCollege" :items="options.topCollege" @set-score="setItemScore" />
+    <visa-checkbox item-name="jica" :item="options.jica" @set-score="setItemScore" />
     <el-divider></el-divider>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
@@ -99,9 +99,27 @@ export default {
     setItemScore(item) {
       let scoreValue = item.value
       switch(item.key) {
+        case 'researchAchievement':
+          scoreValue = calculate.researchAchievementScore(item.value)
+          break
         case 'specialPlus':
           scoreValue = calculate.specialPlusScore(item.value)
-          break          
+          break
+        case 'specialPlusResearch':
+          scoreValue = calculate.specialPlusResearchScore(item.value)
+          break
+        case 'foreignQualification':
+          scoreValue = calculate.foreignQualificationScore(item.value)
+          break
+        case 'japanCollege':
+          scoreValue = calculate.japanCollegeScore(item.value)
+          break
+        case 'topCollege':
+          scoreValue = calculate.topCollegeScore(item.value)
+          break
+        case 'jica':
+          scoreValue = calculate.jicaScore(item.value)
+          break
       }
       this.$store.dispatch('setScore', {key: item.key, score:scoreValue})  
     },
@@ -111,29 +129,11 @@ export default {
       }
       this.$store.dispatch('setScore', {key:'salary', score:calculate.salaryScore(this.$store.state.selectedOption.salary, this.$store.state.scores.age)})
     },
-    researchAchievementScoreCalculate(item) {
-      this.$store.dispatch('setScore', {key:'researchAchievement', score:calculate.researchAchievementScore(item.value)})
-    },
-    specialPlusResearchScoreCalculate(item) {
-      this.$store.dispatch('setScore', {key:'specialPlusResearch', score:item.value ? 5 : 0})
-    },
-    foreignQualificationCalculate(item) {
-      this.$store.dispatch('setScore', {key:'foreignQualification', score:item.value ? 10 : 0})
-    },
-    japanCollegeCalculate(item) {
-      this.$store.dispatch('setScore', {key:'japanCollege', score:item.value ? 10 : 0})
-    },
     japaneseLevelCalculate(item) {
       if (item.key === 'japaneseLevel') {
         this.$store.dispatch('setSelectedOption', {key:'japaneseLevel', value: item.value})
       }
       this.$store.dispatch('setScore', {key:'japaneseLevel', score:calculate.japaneseLevelScore(this.$store.state.selectedOption.japaneseLevel, this.$store.state.scores.japanCollege)})
-    },
-    topCollegeCalculate(item) {
-      this.$store.dispatch('setScore', {key:'topCollege', score:item.value.length > 0 ? 10 : 0})
-    },
-    jicaCalculate(item) {
-      this.$store.dispatch('setScore', {key:'jica', score:item.value ? 5 : 0})
     },
   }
 }
