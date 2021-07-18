@@ -86,24 +86,7 @@
       <el-col :span="2"><div class="grid-content bg-purple">{{ japaneseLevelScore }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.top_college") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="topCollegeChecked" class="text-align-left" @change="topCollegeCalculate">
-            <el-checkbox
-              v-for="item in topCollege"
-              :key="item.key"
-              :label="item.key">
-              {{ item.text }}
-            </el-checkbox>
-          </el-checkbox-group>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ topCollegeScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-label="top_college" item-name="topCollege" :items="topCollege" @set-score="topCollegeCalculate" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.jica") }}</div></el-col>
@@ -159,7 +142,6 @@ export default {
       japaneseLevel: setting.options.japaneseLevel,
       japaneseLevelChecked: [],
       topCollege: setting.options.topCollege,
-      topCollegeChecked: [],
       jica: setting.options.jica,
       jicaChecked: false,
     }
@@ -184,9 +166,6 @@ export default {
       },
       japaneseLevelScore() {
         return this.$store.state.scores.japaneseLevel
-      },
-      topCollegeScore() {
-        return this.$store.state.scores.topCollege
       },
       jicaScore() {
         return this.$store.state.scores.jica
@@ -231,8 +210,8 @@ export default {
     japaneseLevelCalculate() {
       this.$store.dispatch('setScore', {key:'japaneseLevel', score:calculate.japaneseLevelScore(this.japaneseLevelChecked, this.japanCollegeChecked)})
     },
-    topCollegeCalculate() {
-      this.$store.dispatch('setScore', {key:'topCollege', score:this.topCollegeChecked.length > 0 ? 10 : 0})
+    topCollegeCalculate(item) {
+      this.$store.dispatch('setScore', {key:'topCollege', score:item.value.length > 0 ? 10 : 0})
     },
     jicaCalculate() {
       this.$store.dispatch('setScore', {key:'jica', score:this.jicaChecked ? 5 : 0})
