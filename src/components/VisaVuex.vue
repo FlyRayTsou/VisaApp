@@ -34,7 +34,7 @@
       <el-col :span="2"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
-    <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="options.specialPlus" @set-score="specialPlusScoreCalculate" />
+    <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="options.specialPlus" @set-score="setItemScore" />
     <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="options.specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
     <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="options.foreignQualification" @set-score="foreignQualificationCalculate" />
     <visa-checkbox item-label="japan_college" item-name="japanCollege" :item="options.japanCollege" @set-score="japanCollegeCalculate($event), japaneseLevelCalculate($event)" />
@@ -97,7 +97,13 @@ export default {
   },
   methods: {
     setItemScore(item) {
-      this.$store.dispatch('setScore', {key: item.key, score:item.value})
+      let scoreValue = item.value
+      switch(item.key) {
+        case 'specialPlus':
+          scoreValue = calculate.specialPlusScore(item.value)
+          break          
+      }
+      this.$store.dispatch('setScore', {key: item.key, score:scoreValue})  
     },
     salaryScoreCalculate(item) {
       if (item.key === 'salary') {
@@ -107,9 +113,6 @@ export default {
     },
     researchAchievementScoreCalculate(item) {
       this.$store.dispatch('setScore', {key:'researchAchievement', score:calculate.researchAchievementScore(item.value)})
-    },
-    specialPlusScoreCalculate(item) {
-      this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(item.value)})
     },
     specialPlusResearchScoreCalculate(item) {
       this.$store.dispatch('setScore', {key:'specialPlusResearch', score:item.value ? 5 : 0})
