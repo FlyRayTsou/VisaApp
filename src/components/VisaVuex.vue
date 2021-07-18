@@ -37,35 +37,8 @@
     <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="specialPlus" @set-score="specialPlusScoreCalculate" />
     <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
     <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="foreignQualification" @set-score="foreignQualificationCalculate" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.japan_college") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="japanCollegeChecked" @change="japanCollegeCalculate(); japaneseLevelCalculate();">{{ japanCollege.text }}</el-checkbox>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ japanCollegeScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.japanese_level") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple">
-          <el-checkbox-group v-model="japaneseLevelChecked" class="text-align-left" @change="japaneseLevelCalculate">
-            <el-checkbox
-              v-for="item in japaneseLevel"
-              :key="item.key"
-              :label="item.key">
-              {{ item.text }}
-            </el-checkbox>
-          </el-checkbox-group>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ japaneseLevelScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-label="japan_college" item-name="japanCollege" :item="japanCollege" @set-score="japanCollegeCalculate($event), japaneseLevelCalculate($event)" />
+    <visa-checkbox-group item-label="japanese_level" item-name="japaneseLevel" :items="japaneseLevel" @set-score="japaneseLevelCalculate" />
     <visa-checkbox-group item-label="top_college" item-name="topCollege" :items="topCollege" @set-score="topCollegeCalculate" />
     <visa-checkbox item-name="jica" :item="jica" @set-score="jicaCalculate" />
     <el-divider></el-divider>
@@ -176,11 +149,14 @@ export default {
     foreignQualificationCalculate(item) {
       this.$store.dispatch('setScore', {key:'foreignQualification', score:item.value ? 10 : 0})
     },
-    japanCollegeCalculate() {
-      this.$store.dispatch('setScore', {key:'japanCollege', score:this.japanCollegeChecked ? 10 : 0})
+    japanCollegeCalculate(item) {
+      this.$store.dispatch('setScore', {key:'japanCollege', score:item.value ? 10 : 0})
     },
-    japaneseLevelCalculate() {
-      this.$store.dispatch('setScore', {key:'japaneseLevel', score:calculate.japaneseLevelScore(this.japaneseLevelChecked, this.japanCollegeChecked)})
+    japaneseLevelCalculate(item) {
+      if (item.key === 'japaneseLevel') {
+        this.$store.dispatch('setSelectedOption', {key:'japaneseLevel', value: item.value})
+      }
+      this.$store.dispatch('setScore', {key:'japaneseLevel', score:calculate.japaneseLevelScore(this.$store.state.selectedOption.japaneseLevel, this.$store.state.scores.japanCollege)})
     },
     topCollegeCalculate(item) {
       this.$store.dispatch('setScore', {key:'topCollege', score:item.value.length > 0 ? 10 : 0})

@@ -20,7 +20,8 @@ const store = createStore({
                 jica: null,
             },
             selectedOption: {
-                salary: null
+                salary: null,
+                japaneseLevel: [],
             },
             options: {
                 'degree': visa.options.degree,
