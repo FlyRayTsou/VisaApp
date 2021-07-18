@@ -16,31 +16,31 @@
       <el-col :span="2"><div class="grid-content bg-purple">{{ $t("score.name") }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
-    <visa-select item-name="degree" :items="degree" @set-score="setItemScore" />
-    <visa-select item-label="work_experience" item-name="workExperience" :items="workExperience" @set-score="setItemScore" />
-    <visa-select item-label="annual_salary" item-name="salary" :items="salary" @set-score="salaryScoreCalculate" />
-    <visa-select item-name="age" :items="age" @set-score="setItemScore($event), salaryScoreCalculate($event)" />
-    <visa-checkbox-group item-label="research_achievement" item-name="researchAchievement" :items="researchAchievement" @set-score="researchAchievementScoreCalculate" />
+    <visa-select item-name="degree" :items="options.degree" @set-score="setItemScore" />
+    <visa-select item-label="work_experience" item-name="workExperience" :items="options.workExperience" @set-score="setItemScore" />
+    <visa-select item-label="annual_salary" item-name="salary" :items="options.salary" @set-score="salaryScoreCalculate" />
+    <visa-select item-name="age" :items="options.age" @set-score="setItemScore($event), salaryScoreCalculate($event)" />
+    <visa-checkbox-group item-label="research_achievement" item-name="researchAchievement" :items="options.researchAchievement" @set-score="researchAchievementScoreCalculate" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.qualification") }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-radio-group v-model="qualificationsScore">
-            <el-radio v-for="item in qualifications" :key="item.value" :label="item.value">{{ item.text }}</el-radio>
+            <el-radio v-for="item in options.qualifications" :key="item.value" :label="item.value">{{ item.text }}</el-radio>
           </el-radio-group>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
-    <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="specialPlus" @set-score="specialPlusScoreCalculate" />
-    <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
-    <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="foreignQualification" @set-score="foreignQualificationCalculate" />
-    <visa-checkbox item-label="japan_college" item-name="japanCollege" :item="japanCollege" @set-score="japanCollegeCalculate($event), japaneseLevelCalculate($event)" />
-    <visa-checkbox-group item-label="japanese_level" item-name="japaneseLevel" :items="japaneseLevel" @set-score="japaneseLevelCalculate" />
-    <visa-checkbox-group item-label="top_college" item-name="topCollege" :items="topCollege" @set-score="topCollegeCalculate" />
-    <visa-checkbox item-name="jica" :item="jica" @set-score="jicaCalculate" />
+    <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="options.specialPlus" @set-score="specialPlusScoreCalculate" />
+    <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="options.specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
+    <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="options.foreignQualification" @set-score="foreignQualificationCalculate" />
+    <visa-checkbox item-label="japan_college" item-name="japanCollege" :item="options.japanCollege" @set-score="japanCollegeCalculate($event), japaneseLevelCalculate($event)" />
+    <visa-checkbox-group item-label="japanese_level" item-name="japaneseLevel" :items="options.japaneseLevel" @set-score="japaneseLevelCalculate" />
+    <visa-checkbox-group item-label="top_college" item-name="topCollege" :items="options.topCollege" @set-score="topCollegeCalculate" />
+    <visa-checkbox item-name="jica" :item="options.jica" @set-score="jicaCalculate" />
     <el-divider></el-divider>
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
@@ -71,19 +71,7 @@ export default {
   },
   data() {
     return {
-      degree: setting.options.degree,
-      workExperience: setting.options.workExperience,
-      salary: setting.options.salary,
-      age: setting.options.age,
-      researchAchievement: setting.options.researchAchievement,
-      qualifications: setting.options.qualifications,
-      specialPlus: setting.options.specialPlus,
-      specialPlusResearch: setting.options.specialPlusResearch,
-      foreignQualification: setting.options.foreignQualification,
-      japanCollege: setting.options.japanCollege,
-      japaneseLevel: setting.options.japaneseLevel,
-      topCollege: setting.options.topCollege,
-      jica: setting.options.jica,
+      options: setting.options,
     }
   },
   computed: {
