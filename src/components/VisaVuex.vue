@@ -35,17 +35,7 @@
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
     </el-row>
     <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="specialPlus" @set-score="specialPlusScoreCalculate" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.special_plus_research") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="specialPlusResearchChecked" @change="specialPlusResearchScoreCalculate">{{ specialPlusResearch.text }}</el-checkbox>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ specialPlusResearchScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="specialPlusResearch" @set-score="specialPlusResearchScoreCalculate" />
     <el-row :gutter="20">
       <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
       <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.foreign_qualification") }}</div></el-col>
@@ -117,11 +107,13 @@ import calculate from '../assets/js/calculate.js'
 import setting from '../assets/js/setting.js'
 import LangChange from './common/LangChange'
 import VisaSelect from './score/VisaSelect'
+import VisaCheckbox from './score/VisaCheckbox'
 import VisaCheckboxGroup from './score/VisaCheckboxGroup'
 export default {
   components: {
     LangChange,
     VisaSelect,
+    VisaCheckbox,
     VisaCheckboxGroup,
   },
   data() {
@@ -198,8 +190,8 @@ export default {
     specialPlusScoreCalculate(item) {
       this.$store.dispatch('setScore', {key:'specialPlus', score:calculate.specialPlusScore(item.value)})
     },
-    specialPlusResearchScoreCalculate() {
-      this.$store.dispatch('setScore', {key:'specialPlusResearch', score:this.specialPlusResearchChecked ? 5 : 0})
+    specialPlusResearchScoreCalculate(item) {
+      this.$store.dispatch('setScore', {key:'specialPlusResearch', score:item.value ? 5 : 0})
     },
     foreignQualificationCalculate() {
       this.$store.dispatch('setScore', {key:'foreignQualification', score:this.foreignQualificationChecked ? 10 : 0})
