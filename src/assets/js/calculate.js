@@ -3,16 +3,16 @@ import CONSTANT from './constant'
 export default class {
     static salaryScore(salary, age) {
         if(age == CONSTANT.OPTIONS.AGE.ABOVE_THIRTY_NINE && salary <= CONSTANT.OPTIONS.SALARY.SEVEN_TO_EIGHT_MILLION) {
-            return 0
+            return CONSTANT.SCORES.ZERO
         }
         if(age == CONSTANT.OPTIONS.AGE.THIRTY_FIVE_TO_THIRTY_NINE && salary <= CONSTANT.OPTIONS.SALARY.FIVE_TO_SIX_MILLION) {
-            return 0
+            return CONSTANT.SCORES.ZERO
         }
         if(age == CONSTANT.OPTIONS.AGE.THIRTY_TO_THIRTY_FOUR && salary <= CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION) {
-            return 0
+            return CONSTANT.SCORES.ZERO
         }
         if(age == CONSTANT.OPTIONS.DEFAULT) {
-            return 0
+            return CONSTANT.SCORES.ZERO
         }
         switch(salary) {
             case CONSTANT.OPTIONS.SALARY.ABOVE_TEN_MILLION:
@@ -30,7 +30,7 @@ export default class {
             case CONSTANT.OPTIONS.SALARY.FOUR_TO_FIVE_MILLION:
                 return 10
             default:
-                return 0
+                return CONSTANT.SCORES.ZERO
         }
     }
 
@@ -38,11 +38,11 @@ export default class {
         if(researchAchievement.length > 0) {
             return 15
         }
-        return 0
+        return CONSTANT.SCORES.ZERO
     }
 
     static specialPlusScore(specialPlus) {
-        let total = 0
+        let total = CONSTANT.SCORES.ZERO
         let isOne = false
         specialPlus.sort().forEach(rule => {
             switch(rule) {
@@ -67,39 +67,39 @@ export default class {
         if(specialPlusResearch) {
             return 5
         }
-        return 0
+        return CONSTANT.SCORES.ZERO
     }
 
     static foreignQualificationScore(foreignQualification) {
         if(foreignQualification) {
             return 10
         }
-        return 0
+        return CONSTANT.SCORES.ZERO
     }
 
     static japanCollegeScore(japanCollege) {
         if(japanCollege) {
             return 10
         }
-        return 0
+        return CONSTANT.SCORES.ZERO
     }
 
     static topCollegeScore(topCollege) {
         if(topCollege.length > 0) {
             return 10
         }
-        return 0
+        return CONSTANT.SCORES.ZERO
     }
 
     static jicaScore(jica) {
         if(jica) {
             return 5
         }
-        return 0
+        return CONSTANT.SCORES.ZERO
     }
 
     static japaneseLevelScore(japaneseLevelChecked, japanCollegeChecked) {
-        let total = 0
+        let total = CONSTANT.SCORES.ZERO
         let isN1 = false
         japaneseLevelChecked.forEach(rule => {
             switch(rule) {
@@ -124,7 +124,7 @@ export default class {
     }
 
     static totalScore(scores) {
-        let total = 0
+        let total = CONSTANT.SCORES.ZERO
         scores.forEach(score => total = score + total)
         return total
     }

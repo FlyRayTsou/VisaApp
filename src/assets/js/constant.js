@@ -27,5 +27,8 @@ export default Object.freeze({
             THIRTY_FIVE_TO_THIRTY_NINE: 5,
             ABOVE_THIRTY_NINE: 0,
         },
+    },
+    SCORES: {
+        ZERO: 0,
     }
 })
