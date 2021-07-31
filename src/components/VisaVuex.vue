@@ -21,19 +21,7 @@
     <visa-select item-label="annual_salary" item-name="salary" :items="options.salary" @set-score="salaryScoreCalculate" />
     <visa-select item-name="age" :items="options.age" @set-score="setItemScore($event), salaryScoreCalculate($event)" />
     <visa-checkbox-group item-label="research_achievement" item-name="researchAchievement" :items="options.researchAchievement" @set-score="setItemScore" />
-    <el-row :gutter="20">
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="3"><div class="grid-content bg-purple">{{ $t("item.qualification") }}</div></el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple text-align-left">
-          <el-radio-group v-model="qualificationsScore">
-            <el-radio v-for="item in options.qualifications" :key="item.value" :label="item.value">{{ item.text }}</el-radio>
-          </el-radio-group>
-        </div>
-      </el-col>
-      <el-col :span="2"><div class="grid-content bg-purple">{{ qualificationsScore }}</div></el-col>
-      <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
-    </el-row>
+    <visa-radio-group item-name="qualification" :items="options.qualifications" @set-score="setItemScore" />
     <visa-checkbox-group item-label="special_plus" item-name="specialPlus" :items="options.specialPlus" @set-score="setItemScore" />
     <visa-checkbox item-label="special_plus_research" item-name="specialPlusResearch" :item="options.specialPlusResearch" @set-score="setItemScore" />
     <visa-checkbox item-label="foreign_qualification" item-name="foreignQualification" :item="options.foreignQualification" @set-score="setItemScore" />
@@ -60,12 +48,14 @@ import calculate from '../assets/js/calculate.js'
 import setting from '../assets/js/setting.js'
 import LangChange from './common/LangChange'
 import VisaSelect from './score/VisaSelect'
+import VisaRadioGroup from './score/VisaRadioGroup'
 import VisaCheckbox from './score/VisaCheckbox'
 import VisaCheckboxGroup from './score/VisaCheckboxGroup'
 export default {
   components: {
     LangChange,
     VisaSelect,
+    VisaRadioGroup,
     VisaCheckbox,
     VisaCheckboxGroup,
   },
