@@ -9,7 +9,7 @@
               v-for="item in items"
               :key="item.key"
               :label="item.key">
-              {{ item.text }}
+              {{ $t(item.text) }}
             </el-checkbox>
           </el-checkbox-group>
         </div>

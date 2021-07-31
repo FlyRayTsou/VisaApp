@@ -79,19 +79,19 @@ export default {
         researchAchievement:[
           {
             key:1,
-            text:'発明者として特許を受けた発明が１件以上'  
+            text: 'option.research_achievement.rule_1'
           },
           {
             key:2,
-            text:'外国政府から補助金，競争的資金等を受けた研究に３回以上従事'
+            text: 'option.research_achievement.rule_2'
           },
           {
             key:3,
-            text:'学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上※責任著者であるものに限る'
+            text: 'option.research_achievement.rule_3'
           },
           {
             key:4,
-            text:'その他法務大臣が認める研究実績'
+            text: 'option.research_achievement.rule_4'
           },
         ],
         qualifications:[

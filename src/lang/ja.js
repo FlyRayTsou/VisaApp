@@ -52,7 +52,13 @@ export default {
           thirty_to_thirty_four: '30 ~ 34 years',
           thirty_five_to_thirty_nine: '35 ~ 39 years',
           above_thirty_nine: 'Above 39 years',
-      }
+      },
+      research_achievement: {
+        rule_1: '発明者として特許を受けた発明が１件以上',
+        rule_2: '外国政府から補助金，競争的資金等を受けた研究に３回以上従事',
+        rule_3: '学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上※責任著者であるものに限る',
+        rule_4: 'その他法務大臣が認める研究実績',
+      },
     },
     score: {
       name: '点数',
