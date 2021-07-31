@@ -5,7 +5,7 @@
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
           <el-radio-group v-model="checkedItem" class="text-align-left" @change="update">
-            <el-radio v-for="item in items" :key="item.value" :label="item.value">{{ item.text }}</el-radio>
+            <el-radio v-for="item in items" :key="item.value" :label="item.value">{{ $t(item.text) }}</el-radio>
           </el-radio-group>
         </div>
       </el-col>

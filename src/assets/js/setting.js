@@ -97,15 +97,15 @@ export default {
         qualifications:[
           {
             value:0,
-            text:'なし'  
+            text: 'option.qualifications.none'
           },
           {
             value:5,
-            text:'１つ保有'  
+            text: 'option.qualifications.single'
           },
           {
             value:10,
-            text:'複数保有'
+            text: 'option.qualifications.multiple'
           },
         ],
         specialPlus:[
