@@ -112,17 +112,17 @@ export default {
           {
             key:1,
             value:10,
-            text:'Ⅰ　イノベーション促進支援措置を受けている'  
+            text: 'option.special_plus.rule_1',
           },
           {
             key:2,
             value:10,
-            text:'Ⅱ　Ⅰに該当する企業であって，中小企業基本法に規定する中小企業者'
+            text: 'option.special_plus.rule_2',
           },
           {
             key:3,
             value:10,
-            text:'Ⅲ　国家戦略特別区域高度人材外国人受入促進事業の対象企業として支援を受けている'
+            text: 'option.special_plus.rule_3',
           },
         ],
         specialPlusResearch:{
@@ -141,29 +141,29 @@ export default {
           {
             key:1,
             value:15,
-            text:'日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当'  
+            text: 'option.japanese_level.n1'
           },
           {
             key:2,
             value:10,
-            text:'日本語能力試験Ｎ２合格相当'
+            text: 'option.japanese_level.n2'
           },
         ],
         topCollege:[
           {
             key:1,
             value:10,
-            text:'Ⅰ　以下のランキング２つ以上において３００位以内の外国の大学又はいずれかにランクづけされている本邦の大学'  
+            text:'option.top_college.rule_1'
           },
           {
             key:2,
             value:10,
-            text:'Ⅱ　文部科学省が実施するスーパーグローバル大学創成支援事業（トップ型及びグローバル化牽引型）において，補助金の交付を受けている大学'
+            text:'option.top_college.rule_2'
           },
           {
             key:3,
             value:10,
-            text:'Ⅲ　外務省が実施するイノベーティブ・アジア事業において，「パートナー校」として指定を受けている大学'
+            text:'option.top_college.rule_3'
           },
         ],
         jica:{
