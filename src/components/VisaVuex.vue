@@ -65,14 +65,6 @@ export default {
     }
   },
   computed: {
-      qualificationsScore: {
-        get: function() {
-          return this.$store.state.scores.qualifications
-        },
-        set: function(value) {
-          this.$store.dispatch('setScore', {key:'qualifications', score:value})
-        },
-      },
       totalScore() {
         return this.$store.getters.totalScores
       },
