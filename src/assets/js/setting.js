@@ -127,15 +127,15 @@ export default {
         ],
         specialPlusResearch:{
             value:5,
-            text:'契約機関が中小企業基本法に規定する中小企業者で，試験研究費及び開発費の合計金額が，総収入金額から固定資産若しくは有価証券の譲渡による収入金額を控除した金額（売上高）の３％超'  
+            text: 'option.special_plus_research.rule',
         },
         foreignQualification:{
             value:5,
-            text:'従事しようとする業務に関連する外国の資格，表彰等で法務大臣が認めるものを保有'  
+            text: 'option.foreign_qualification.rule',
         },
         japanCollege:{
           value:10,
-          text:'日本の大学を卒業又は大学院の課程を修了'  
+          text: 'option.japan_college.rule',
         },
         japaneseLevel: [
           {
@@ -168,7 +168,7 @@ export default {
         ],
         jica:{
           value:5,
-          text:'外務省が実施するイノベーティブ・アジア事業の一環としてＪＩＣＡが実施する研修を修了したこと'  
+          text: 'option.jica.rule',
         },
     },
 }

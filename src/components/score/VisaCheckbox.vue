@@ -4,7 +4,7 @@
       <el-col :span="3"><div class="grid-content bg-purple">{{ labelText }}</div></el-col>
       <el-col :span="6">
         <div class="grid-content bg-purple text-align-left">
-          <el-checkbox v-model="checkedItem" @change="update">{{ item.text }}</el-checkbox>
+          <el-checkbox v-model="checkedItem" @change="update">{{ $t(item.text) }}</el-checkbox>
         </div>
       </el-col>
       <el-col :span="2"><div class="grid-content bg-purple">{{ displayScore }}</div></el-col>
