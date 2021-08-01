@@ -11,7 +11,7 @@ on:
     types: [closed]
 
 jobs:
-  unit_test:
+  unit_test_and_build:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     if: (!(github.event_name == 'pull_request' && github.event.pull_request.merged == false))
@@ -23,5 +23,15 @@ jobs:
         run: npm run test
       - name: npm build
         run: npm run build
-      - name: GAE deploy
-        run: gcloud app deploy app.yaml --project titanium-gadget-3215113
+  deploy:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    steps:
+      - uses: google-github-actions/setup-gcloud@master
+      - name: Set up Cloud SDK   
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+      - name: Use gcloud CLI
+        run: gcloud info
