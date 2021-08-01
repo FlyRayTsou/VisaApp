@@ -10,6 +10,9 @@ on:
       - 'main'
     types: [closed]
 
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
 jobs:
   unit_test_and_build:
     runs-on: ubuntu-20.04
@@ -32,6 +35,4 @@ jobs:
       - name: Use gcloud CLI
         run: gcloud info
       - name: GAE deploy
-        run: gcloud app deploy app.yaml --project
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+        run: gcloud app deploy app.yaml --project ${PROJECT_ID}
