@@ -59,6 +59,9 @@ export default {
         rule_3: 'en-学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上※責任著者であるものに限る',
         rule_4: 'en-その他法務大臣が認める研究実績',
       },
+      jica: {
+        rule: 'Have completed training conducted by JICA as part of the Innovative Asia Project implemented by the Ministry of Foreign Affairs',
+      },
     },
     score: {
       name: 'Scores',
