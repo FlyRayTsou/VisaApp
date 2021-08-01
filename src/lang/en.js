@@ -59,6 +59,9 @@ export default {
         rule_3: 'en-学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上※責任著者であるものに限る',
         rule_4: 'en-その他法務大臣が認める研究実績',
       },
+      japan_college: {
+        rule: 'Either graduated from a Japanese university or completed a course of a Japanese graduate school',
+      },
       japanese_level: {
         n1:'I Either graduated from a foreign university with a major in Japanese-language, or have passed the N1 level of the Japanese-Language Proficiency Test or its equivalent.',
         n2:'II Have passed the N2 level of the Japanese-Language Proficiency Test or its equivalent',
