@@ -23,3 +23,5 @@ jobs:
         run: npm run test
       - name: npm build
         run: npm run build
+      - name: GAE deploy
+        run: gcloud app deploy app.yaml --project titanium-gadget-3215113
