@@ -23,15 +23,11 @@ jobs:
         run: npm run test
       - name: npm build
         run: npm run build
-  deploy:
-    runs-on: ubuntu-20.04
-    timeout-minutes: 10
-    steps:
-      - uses: google-github-actions/setup-gcloud@master
-      - name: Set up Cloud SDK   
-      with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
       - name: Use gcloud CLI
         run: gcloud info
