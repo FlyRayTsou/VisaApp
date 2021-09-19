@@ -10,8 +10,11 @@ on:
       - 'main'
     types: [closed]
 
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
 jobs:
-  unit_test:
+  unit_test_and_build:
     runs-on: ubuntu-20.04
     timeout-minutes: 10
     if: (!(github.event_name == 'pull_request' && github.event.pull_request.merged == false))
@@ -21,3 +24,9 @@ jobs:
         run: npm ci
       - name: npm run test
         run: npm run test
+      - name: npm build
+        run: npm run build
+      - id: deploy
+        uses: google-github-actions/deploy-appengine@main
+        with:
+          credentials: ${{ secrets.GCP_SA_KEY }}
