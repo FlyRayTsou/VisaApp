@@ -59,6 +59,21 @@ export default {
         rule_3: 'en-学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上※責任著者であるものに限る',
         rule_4: 'en-その他法務大臣が認める研究実績',
       },
+      japan_college: {
+        rule: 'Either graduated from a Japanese university or completed a course of a Japanese graduate school',
+      },
+      japanese_level: {
+        n1:'I Either graduated from a foreign university with a major in Japanese-language, or have passed the N1 level of the Japanese-Language Proficiency Test or its equivalent.',
+        n2:'II Have passed the N2 level of the Japanese-Language Proficiency Test or its equivalent',
+      },
+      top_college: {
+        rule_1: 'Ⅰ　以下のランキング２つ以上において３００位以内の外国の大学又はいずれかにランクづけされている本邦の大学',
+        rule_2: 'Ⅱ　文部科学省が実施するスーパーグローバル大学創成支援事業（トップ型及びグローバル化牽引型）において，補助金の交付を受けている大学',
+        rule_3: 'Ⅲ　外務省が実施するイノベーティブ・アジア事業において，「パートナー校」として指定を受けている大学',
+      },
+      jica: {
+        rule: 'Have completed training conducted by JICA as part of the Innovative Asia Project implemented by the Ministry of Foreign Affairs',
+      },
     },
     score: {
       name: 'Scores',
