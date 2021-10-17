@@ -10,9 +10,6 @@ on:
       - 'main'
     types: [closed]
 
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-
 jobs:
   unit_test_and_build:
     runs-on: ubuntu-20.04
@@ -30,3 +27,5 @@ jobs:
         uses: google-github-actions/deploy-appengine@main
         with:
           credentials: ${{ secrets.GCP_SA_KEY }}
+      - name: show deploy url
+        run: gcloud app describe
